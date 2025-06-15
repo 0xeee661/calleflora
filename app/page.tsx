@@ -24,9 +24,10 @@ export default function Home() {
 
           <div className="font-playfair text-foreground mt-4 max-w-2xl text-center tracking-wide select-none">
             <span className="block text-xl leading-snug font-light text-white/90 sm:text-2xl">
-              "Las <i className="font-semibold">plantas</i> eran mi{' '}
+              &quot;Las <i className="font-semibold">plantas</i> eran mi{' '}
               <i className="font-semibold">primer amor</i>.<br />
-              En su silencio <i className="font-semibold">entendí todo.</i>"
+              En su silencio <i className="font-semibold">entendí todo.</i>
+              &quot;
             </span>
 
             <span className="font-quicksand mt-2 block text-sm sm:text-base">

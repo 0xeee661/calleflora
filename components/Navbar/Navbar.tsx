@@ -6,20 +6,6 @@ import Link from 'next/link'
 import styles from './Navbar.module.css'
 import Image from 'next/image'
 
-// Custom TikTok SVG Icon
-function TikTokIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
-      <path d="M12.5 2v13.25a2.25 2.25 0 1 1-2.25-2.25c.138 0 .273.014.404.04V10.5a5.25 5.25 0 1 0 5.25 5.25V7.5c.69.6 1.59.98 2.57.98V6.13c-.98-.01-1.88-.39-2.57-.99V2h-3.37z" />
-    </svg>
-  )
-}
-
 export default function Navbar() {
   const [drawerOpen, setDrawerOpen] = useState(false)
 
