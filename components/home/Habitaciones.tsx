@@ -1,12 +1,9 @@
 import { ArrowDownRight } from 'lucide-react'
-import Navbar from '../Navbar/Navbar'
 import Link from 'next/link'
 
 export default function Habitaciones() {
   return (
     <main className="relative h-screen snap-start">
-      <Navbar />
-
       <div className="absolute inset-0 -z-10">
         <video
           src="/videos/habitaciones.mp4"
@@ -35,11 +32,11 @@ export default function Habitaciones() {
 
           <Link
             href="/"
-            className="absolute right-0 bottom-0 z-20 flex size-16 items-center justify-center rounded-full bg-white shadow-lg transition hover:scale-105 active:scale-95"
+            className="absolute right-0 bottom-0 z-20 flex size-12 items-center justify-center rounded-full bg-white shadow-lg transition hover:scale-105 active:scale-95 sm:size-16"
             style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.18)' }}
             aria-label="Siguiente"
           >
-            <ArrowDownRight className="size-9 font-light text-black" />
+            <ArrowDownRight className="size-6 font-light text-black sm:size-9" />
           </Link>
         </div>
       </div>
