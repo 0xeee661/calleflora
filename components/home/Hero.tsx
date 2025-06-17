@@ -1,4 +1,4 @@
-import Reservation from '../Reservation/Reservation'
+/* import Reservation from '../Reservation/Reservation' */
 
 export default function Hero() {
   return (
@@ -34,7 +34,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <Reservation className="max-sm:grid-cols-[1fr_115px]" />
+      {/* <Reservation className="max-sm:grid-cols-[1fr_115px]" /> */}
     </main>
   )
 }
