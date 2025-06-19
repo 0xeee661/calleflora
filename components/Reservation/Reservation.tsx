@@ -7,7 +7,7 @@ export default function Reservation({
   return (
     <div
       className={cn(
-        'grid h-[109px] w-full grid-cols-[1fr_200px] items-center gap-2 border-t border-white/10 bg-black/50 shadow-lg backdrop-blur-sm',
+        'grid h-[109px] w-full grid-cols-[1fr_200px] items-center gap-2 border-t border-white/10 bg-black/50 shadow-lg backdrop-blur-sm max-sm:grid-cols-[1fr_115px]',
         className,
       )}
     >
