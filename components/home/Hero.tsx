@@ -34,7 +34,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* <Reservation className="max-sm:grid-cols-[1fr_115px]" /> */}
+      {/* <Reservation /> */}
     </main>
   )
 }

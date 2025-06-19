@@ -29,7 +29,7 @@ export default function NavDrawer() {
     },
     {
       label: 'Contácto',
-      href: '/',
+      href: '/contacto',
     },
     {
       label: 'About Us',
@@ -89,7 +89,7 @@ export default function NavDrawer() {
                 <Link
                   key={link.label}
                   className="font-playfair text-right text-5xl text-white italic transition hover:opacity-80"
-                  href="/"
+                  href={link.href}
                 >
                   {link.label}
                 </Link>
