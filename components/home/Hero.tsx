@@ -21,15 +21,13 @@ export default function Hero() {
 
           <div className="font-playfair text-foreground mt-4 max-w-2xl text-center tracking-wide select-none">
             <span className="block text-xl leading-snug font-light text-white/90 sm:text-2xl">
-              &quot;Las <i className="font-semibold">plantas</i> eran mi{' '}
-              <i className="font-semibold">primer amor</i>.<br />
-              En su silencio <i className="font-semibold">entendí todo.</i>
-              &quot;
+              Un hotel que hace homenaje <br /> a la eterna{' '}
+              <i className="font-semibold">Primavera</i>.
             </span>
 
-            <span className="font-quicksand mt-2 block text-sm sm:text-base">
+            {/* <span className="font-quicksand mt-2 block text-sm sm:text-base">
               — Diario de Lecumberri, Álvaro Mutis
-            </span>
+            </span> */}
           </div>
         </div>
       </div>

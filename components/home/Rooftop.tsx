@@ -7,7 +7,14 @@ export default function Rooftop() {
         <Image
           src="/images/rooftop.png"
           alt="Rooftop"
-          className="mx-auto h-full object-cover"
+          className="mx-auto hidden h-full object-cover md:block"
+          width={1300}
+          height={1000}
+        />
+        <Image
+          src="/images/rooftop_mobile.png"
+          alt="Rooftop"
+          className="mx-auto block h-full object-cover md:hidden"
           width={1300}
           height={1000}
         />
