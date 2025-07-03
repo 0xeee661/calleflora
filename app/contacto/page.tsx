@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Reservation from '../../components/Reservation/Reservation'
 import Navbar from '../../components/Navbar/Navbar'
 import ContactoForm from './components/ContactoForm'
 
@@ -26,7 +25,7 @@ export default function ContactoPage() {
           </h1>
         </div>
 
-        <Reservation />
+        {/* <Reservation /> */}
       </main>
 
       <section className="z-10 mx-auto my-20 max-w-[1075px] space-y-32">
