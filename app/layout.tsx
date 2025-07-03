@@ -17,7 +17,7 @@ const quicksand = Quicksand({
 })
 
 export const metadata: Metadata = {
-  title: 'Invierte - Calle Flora Hotel',
+  title: 'Calle Flora Hotel',
   description: 'Un proyecto de inversión hotelero único como nuestras flores',
 }
 
