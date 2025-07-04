@@ -3,6 +3,7 @@ import Habitaciones from '@/components/home/Habitaciones'
 import Rooftop from '@/components/home/Rooftop'
 import QuotePage from '@/components/home/QuotePage'
 import Navbar from '@/components/Navbar/Navbar'
+import Map from '@/components/home/Map'
 
 export default function Home() {
   return (
@@ -15,6 +16,8 @@ export default function Home() {
         <Habitaciones />
 
         <QuotePage />
+
+        <Map />
 
         <Rooftop />
       </div>
