@@ -393,6 +393,134 @@ export type ImageTransformOptions = {
   width?: InputMaybe<Scalars['Dimension']['input']>;
 };
 
+/** [See type definition](https://app.contentful.com/spaces/pps80b6lw2v0/content_types/legal) */
+export type Legal = Entry & _Node & {
+  __typename?: 'Legal';
+  _id: Scalars['ID']['output'];
+  content?: Maybe<LegalContent>;
+  contentfulMetadata: ContentfulMetadata;
+  linkedFrom?: Maybe<LegalLinkingCollections>;
+  sys: Sys;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/pps80b6lw2v0/content_types/legal) */
+export type LegalContentArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/pps80b6lw2v0/content_types/legal) */
+export type LegalLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/pps80b6lw2v0/content_types/legal) */
+export type LegalTitleArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LegalCollection = {
+  __typename?: 'LegalCollection';
+  items: Array<Maybe<Legal>>;
+  limit: Scalars['Int']['output'];
+  skip: Scalars['Int']['output'];
+  total: Scalars['Int']['output'];
+};
+
+export type LegalContent = {
+  __typename?: 'LegalContent';
+  json: Scalars['JSON']['output'];
+  links: LegalContentLinks;
+};
+
+export type LegalContentAssets = {
+  __typename?: 'LegalContentAssets';
+  block: Array<Maybe<Asset>>;
+  hyperlink: Array<Maybe<Asset>>;
+};
+
+export type LegalContentEntries = {
+  __typename?: 'LegalContentEntries';
+  block: Array<Maybe<Entry>>;
+  hyperlink: Array<Maybe<Entry>>;
+  inline: Array<Maybe<Entry>>;
+};
+
+export type LegalContentLinks = {
+  __typename?: 'LegalContentLinks';
+  assets: LegalContentAssets;
+  entries: LegalContentEntries;
+  resources: LegalContentResources;
+};
+
+export type LegalContentResources = {
+  __typename?: 'LegalContentResources';
+  block: Array<LegalContentResourcesBlock>;
+  hyperlink: Array<LegalContentResourcesHyperlink>;
+  inline: Array<LegalContentResourcesInline>;
+};
+
+export type LegalContentResourcesBlock = ResourceLink & {
+  __typename?: 'LegalContentResourcesBlock';
+  sys: ResourceSys;
+};
+
+export type LegalContentResourcesHyperlink = ResourceLink & {
+  __typename?: 'LegalContentResourcesHyperlink';
+  sys: ResourceSys;
+};
+
+export type LegalContentResourcesInline = ResourceLink & {
+  __typename?: 'LegalContentResourcesInline';
+  sys: ResourceSys;
+};
+
+export type LegalFilter = {
+  AND?: InputMaybe<Array<InputMaybe<LegalFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<LegalFilter>>>;
+  content_contains?: InputMaybe<Scalars['String']['input']>;
+  content_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  content_not_contains?: InputMaybe<Scalars['String']['input']>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  sys?: InputMaybe<SysFilter>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  title_contains?: InputMaybe<Scalars['String']['input']>;
+  title_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title_not?: InputMaybe<Scalars['String']['input']>;
+  title_not_contains?: InputMaybe<Scalars['String']['input']>;
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type LegalLinkingCollections = {
+  __typename?: 'LegalLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type LegalLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export enum LegalOrder {
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
+
 export type Query = {
   __typename?: 'Query';
   _node?: Maybe<_Node>;
@@ -400,6 +528,8 @@ export type Query = {
   asset?: Maybe<Asset>;
   assetCollection?: Maybe<AssetCollection>;
   entryCollection?: Maybe<EntryCollection>;
+  legal?: Maybe<Legal>;
+  legalCollection?: Maybe<LegalCollection>;
   room?: Maybe<Room>;
   roomCollection?: Maybe<RoomCollection>;
   rooms?: Maybe<Rooms>;
@@ -448,6 +578,23 @@ export type QueryEntryCollectionArgs = {
 };
 
 
+export type QueryLegalArgs = {
+  id: Scalars['String']['input'];
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type QueryLegalCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<LegalOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<LegalFilter>;
+};
+
+
 export type QueryRoomArgs = {
   id: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
@@ -481,6 +628,16 @@ export type QueryRoomsCollectionArgs = {
   where?: InputMaybe<RoomsFilter>;
 };
 
+export type ResourceLink = {
+  sys: ResourceSys;
+};
+
+export type ResourceSys = {
+  __typename?: 'ResourceSys';
+  linkType: Scalars['String']['output'];
+  urn: Scalars['String']['output'];
+};
+
 /** [See type definition](https://app.contentful.com/spaces/pps80b6lw2v0/content_types/room) */
 export type Room = Entry & _Node & {
   __typename?: 'Room';
@@ -491,6 +648,7 @@ export type Room = Entry & _Node & {
   imageLetter?: Maybe<Asset>;
   imagesCollection?: Maybe<AssetCollection>;
   linkedFrom?: Maybe<RoomLinkingCollections>;
+  poster?: Maybe<Asset>;
   sys: Sys;
   type?: Maybe<Scalars['String']['output']>;
 };
@@ -532,6 +690,13 @@ export type RoomLinkedFromArgs = {
 
 
 /** [See type definition](https://app.contentful.com/spaces/pps80b6lw2v0/content_types/room) */
+export type RoomPosterArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/pps80b6lw2v0/content_types/room) */
 export type RoomTypeArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
@@ -558,6 +723,7 @@ export type RoomFilter = {
   description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   imageLetter_exists?: InputMaybe<Scalars['Boolean']['input']>;
   imagesCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  poster_exists?: InputMaybe<Scalars['Boolean']['input']>;
   sys?: InputMaybe<SysFilter>;
   type?: InputMaybe<Scalars['String']['input']>;
   type_contains?: InputMaybe<Scalars['String']['input']>;
@@ -780,6 +946,7 @@ export type CfRoomNestedFilter = {
   description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   imageLetter_exists?: InputMaybe<Scalars['Boolean']['input']>;
   imagesCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  poster_exists?: InputMaybe<Scalars['Boolean']['input']>;
   sys?: InputMaybe<SysFilter>;
   type?: InputMaybe<Scalars['String']['input']>;
   type_contains?: InputMaybe<Scalars['String']['input']>;
@@ -793,7 +960,7 @@ export type CfRoomNestedFilter = {
 export type RoomsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type RoomsQuery = { __typename?: 'Query', roomsCollection?: { __typename?: 'RoomsCollection', items: Array<{ __typename?: 'Rooms', listCollection?: { __typename?: 'RoomsListCollection', items: Array<{ __typename?: 'Room', type?: string | null, description?: string | null, imageLetter?: { __typename?: 'Asset', url?: string | null } | null, imagesCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', url?: string | null } | null> } | null, background?: { __typename?: 'Asset', url?: string | null, contentType?: string | null } | null } | null> } | null } | null> } | null };
+export type RoomsQuery = { __typename?: 'Query', roomsCollection?: { __typename?: 'RoomsCollection', items: Array<{ __typename?: 'Rooms', listCollection?: { __typename?: 'RoomsListCollection', items: Array<{ __typename?: 'Room', type?: string | null, description?: string | null, imageLetter?: { __typename?: 'Asset', url?: string | null } | null, imagesCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', url?: string | null, width?: number | null, height?: number | null } | null> } | null, background?: { __typename?: 'Asset', url?: string | null, contentType?: string | null } | null } | null> } | null } | null> } | null };
 
 
-export const RoomsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Rooms"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"roomsCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"1"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"listCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"imageLetter"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"imagesCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"background"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"contentType"}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<RoomsQuery, RoomsQueryVariables>;
+export const RoomsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Rooms"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"roomsCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"1"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"listCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"imageLetter"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"imagesCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"background"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"contentType"}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<RoomsQuery, RoomsQueryVariables>;

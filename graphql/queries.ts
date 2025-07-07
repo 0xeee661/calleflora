@@ -14,6 +14,8 @@ export const rooms = gql`
             imagesCollection {
               items {
                 url
+                width
+                height
               }
             }
             background {
