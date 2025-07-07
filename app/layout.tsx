@@ -3,6 +3,8 @@ import { Playfair_Display, Quicksand } from 'next/font/google'
 import './globals.css'
 import { cn } from '../lib/utils'
 import FloatingButtons from '@/components/FloatingButtons/FloatingButtons'
+import Navbar from '@/components/Navbar/Navbar'
+import { Footer } from '@/components/Footer/Footer'
 
 const playfairDisplay = Playfair_Display({
   variable: '--font-playfair-display',
@@ -35,8 +37,10 @@ export default function RootLayout({
           'antialiased',
         )}
       >
+        <Navbar />
         <FloatingButtons />
         {children}
+        <Footer />
       </body>
     </html>
   )

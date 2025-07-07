@@ -1,13 +1,10 @@
 import Image from 'next/image'
-import Navbar from '../../components/Navbar/Navbar'
 import ContactoForm from './components/ContactoForm'
 
 export default function ContactoPage() {
   return (
     <>
       <main className="relative flex min-h-screen flex-col justify-between">
-        <Navbar />
-
         <div className="absolute inset-0 -z-10">
           <Image
             src="/images/contacto.png"

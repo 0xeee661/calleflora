@@ -28,6 +28,15 @@ export default function Hero() {
             {/* <span className="font-quicksand mt-2 block text-sm sm:text-base">
               — Diario de Lecumberri, Álvaro Mutis
             </span> */}
+
+            <a
+              href="https://direct-book.com/properties/HotelCalleFloradirect"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex cursor-pointer rounded-md bg-white px-4 py-2 text-black"
+            >
+              RESERVAR
+            </a>
           </div>
         </div>
       </div>

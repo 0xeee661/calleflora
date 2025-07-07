@@ -63,7 +63,7 @@ export default function NavDrawer() {
   return (
     <>
       <EllipsisVertical
-        className="text-foreground hover:text-foreground/80 absolute left-8 size-7 cursor-pointer"
+        className="text-foreground hover:text-foreground/80 size-7 cursor-pointer"
         onClick={() => setDrawerOpen(true)}
       />
 
