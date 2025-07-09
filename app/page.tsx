@@ -10,7 +10,7 @@ export default async function Home() {
 
   return (
     <>
-      <div className="scrollbar-hide font-istok no-scrollbar overflow-x-hidden scroll-smooth md:h-screen md:snap-y md:snap-mandatory md:overflow-y-scroll">
+      <div>
         <Hero />
 
         <Rooms rooms={data?.listCollection?.items || []} />
