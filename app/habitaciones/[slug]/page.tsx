@@ -2,8 +2,11 @@ import { getRoomData } from '@/lib/api'
 import { RoomPage } from './page.client'
 import { notFound } from 'next/navigation'
 
-const Room = async ({ params }: { params: { slug: string } }) => {
-  const { slug } = params
+type Props = {
+  params: Promise<{ slug: string }>
+}
+const Room = async ({ params }: Props) => {
+  const { slug } = await params
   const room = await getRoomData({ slug })
 
   if (!room) {
