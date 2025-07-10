@@ -1,4 +1,4 @@
-import { rooms } from '@/graphql/queries'
+import { roomData, rooms, roomSeo } from '@/graphql/queries'
 import { Query } from '@/types/graphql/graphql'
 import { getGqlString } from '@/utils/helpers/getGqlString'
 import type { TypedDocumentNode } from '@graphql-typed-document-node/core'
@@ -40,6 +40,31 @@ export const getRooms = async ({ preview, locale }: GetData) => {
     preview,
     variables: { locale },
   })
-  console.log(response)
   return response.data.roomsCollection?.items[0]
+}
+
+export const getRoomData = async ({
+  preview,
+  locale,
+  slug,
+}: GetData & { slug: string }) => {
+  const response = await fetchGraphQL({
+    query: roomData,
+    preview,
+    variables: { locale, slug },
+  })
+  return response.data.roomCollection?.items[0]
+}
+
+export const getRoomSeo = async ({
+  preview,
+  locale,
+  slug,
+}: GetData & { slug: string }) => {
+  const response = await fetchGraphQL({
+    query: roomSeo,
+    preview,
+    variables: { locale, slug },
+  })
+  return response.data.roomCollection?.items[0]?.seo
 }

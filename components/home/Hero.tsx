@@ -1,5 +1,7 @@
 /* import Reservation from '../Reservation/Reservation' */
 
+import { bookingLink } from '@/constants/app'
+
 export default function Hero() {
   return (
     <main className="relative h-screen snap-start">
@@ -30,7 +32,7 @@ export default function Hero() {
             </span> */}
 
             <a
-              href="https://direct-book.com/properties/HotelCalleFloradirect"
+              href={bookingLink}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-flex cursor-pointer rounded-md bg-white px-4 py-2 text-black"

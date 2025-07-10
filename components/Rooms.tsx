@@ -1,13 +1,14 @@
 'use client'
 
 import { Maybe, Room } from '@/types/graphql/graphql'
-import { useState, useMemo } from 'react'
+import { useState } from 'react'
 import { Gallery, Item } from 'react-photoswipe-gallery'
 import 'photoswipe/dist/photoswipe.css'
 import Slider, { Settings } from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
+import { applyItalicPattern } from '@/lib/utils'
 
 type ArrowProps = {
   className: string
@@ -56,31 +57,6 @@ export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
     ],
   }
 
-  console.log(currentRoom)
-
-  // Función para renderizar la descripción con palabras aleatorias en cursiva
-  const renderDescription = useMemo(() => {
-    if (!currentRoom?.description) return null
-
-    const words = currentRoom.description.split(' ')
-    const italicizedWords = words.map((word, index) => {
-      // 30% de probabilidad de que una palabra sea cursiva
-      const shouldItalicize = Math.random() < 0.3
-
-      return shouldItalicize ? (
-        <em key={index} className="font-semibold italic">
-          {word}{' '}
-        </em>
-      ) : (
-        <span key={index}>{word} </span>
-      )
-    })
-
-    return italicizedWords
-  }, [currentRoom?.description])
-
-  console.log(currentRoom?.imagesCollection?.items)
-
   return (
     <section className="relative h-screen snap-start">
       {currentRoom && (
@@ -121,7 +97,7 @@ export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
             />
           )}
           <p className="font-playfair max-w-[356px] text-2xl">
-            {renderDescription}
+            {applyItalicPattern(currentRoom?.description || '')}
           </p>
         </div>
         {currentRoom?.imagesCollection?.items && (
