@@ -1,6 +1,6 @@
 import Hero from '@/components/home/Hero'
-import Rooftop from '@/components/home/Rooftop'
-import QuotePage from '@/components/home/QuotePage'
+/*   import Rooftop from '@/components/home/Rooftop'
+  import QuotePage from '@/components/home/QuotePage' */
 import Map from '@/components/home/Map'
 import { Rooms } from '@/components/Rooms'
 import { getRooms } from '@/lib/api'
@@ -15,11 +15,11 @@ export default async function Home() {
 
         <Rooms rooms={data?.listCollection?.items || []} />
 
-        <QuotePage />
+        {/*         <QuotePage /> */}
 
         <Map />
 
-        <Rooftop />
+        {/*         <Rooftop /> */}
       </div>
     </>
   )
