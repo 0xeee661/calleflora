@@ -9,6 +9,7 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { applyItalicPattern } from '@/lib/utils'
+import { motion, AnimatePresence } from 'motion/react'
 
 type ArrowProps = {
   className: string
@@ -59,80 +60,133 @@ export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
 
   return (
     <section className="relative h-screen snap-start">
-      {currentRoom && (
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="none"
-          className="absolute inset-0 h-full min-h-screen w-full object-cover align-top opacity-40"
-          poster={currentRoom.background?.url || undefined}
-        >
-          {currentRoom.background?.url && (
-            <source src={currentRoom.background?.url} type="video/mp4" />
-          )}
-        </video>
-      )}
+      <AnimatePresence mode="wait">
+        {currentRoom && (
+          <motion.video
+            key={currentRoom.type}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.4 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6, ease: 'easeInOut' }}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="none"
+            className="absolute inset-0 h-full min-h-screen w-full object-cover align-top"
+            poster={currentRoom.background?.url || undefined}
+          >
+            {currentRoom.background?.url && (
+              <source src={currentRoom.background?.url} type="video/mp4" />
+            )}
+          </motion.video>
+        )}
+      </AnimatePresence>
+
       <nav className="absolute top-30 right-8 z-10 flex justify-center gap-4">
         {rooms.map(room => (
-          <button
+          <motion.button
             key={room?.type}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => setCurrentRoom(room)}
             className={`font-quicksand text-[2rem] transition-all duration-300 ${
               currentRoom?.type === room?.type ? 'underline' : ''
             }`}
           >
             {room?.type}
-          </button>
+          </motion.button>
         ))}
       </nav>
+
       <div className="relative z-1 flex h-full flex-col gap-8 p-4 py-50 md:justify-end md:p-16">
-        <div className="flex flex-col items-center justify-start gap-4 md:flex-row">
-          {currentRoom?.imageLetter?.url && (
-            <img
-              src={currentRoom?.imageLetter?.url}
-              alt={`Flor de la habitación ${currentRoom?.type}`}
-              className="h-60 md:h-96"
-            />
-          )}
-          <p className="font-playfair max-w-[356px] text-2xl">
-            {applyItalicPattern(currentRoom?.description || '')}
-          </p>
-        </div>
-        {currentRoom?.imagesCollection?.items && (
-          <Gallery>
-            <Slider
-              {...settings}
-              className="ml-auto w-full max-w-[754px] gap-[20px] px-5"
+        <AnimatePresence mode="wait">
+          {currentRoom && (
+            <motion.div
+              key={currentRoom.type}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -50 }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+              className="flex flex-col items-center justify-start gap-4 md:flex-row"
             >
-              {currentRoom?.imagesCollection?.items?.map(
-                (image, index) =>
-                  image?.url && (
-                    <Item
-                      key={index}
-                      original={image?.url || ''}
-                      thumbnail={image?.url || ''}
-                      width={image?.width || 0}
-                      height={image?.height || 0}
-                    >
-                      {({ ref, open }) => (
-                        <img
-                          ref={ref}
-                          onClick={open}
-                          src={image?.url || ''}
-                          alt={`photo-${index + 1}`}
-                          width={image?.width || 0}
-                          height={image?.height || 0}
-                          className="h-40 w-full rounded-[20px] object-cover"
-                        />
-                      )}
-                    </Item>
-                  ),
+              {currentRoom?.imageLetter?.url && (
+                <motion.img
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  src={currentRoom?.imageLetter?.url}
+                  alt={`Flor de la habitación ${currentRoom?.type}`}
+                  className="h-60 md:h-96"
+                />
               )}
-            </Slider>
-          </Gallery>
-        )}
+              <motion.p
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="font-playfair max-w-[356px] text-2xl"
+              >
+                {applyItalicPattern(currentRoom?.description || '')}
+              </motion.p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence mode="wait">
+          {currentRoom?.imagesCollection?.items && (
+            <motion.div
+              key={currentRoom.type}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <Gallery>
+                <Slider
+                  {...settings}
+                  className="ml-auto w-full max-w-[754px] gap-[20px] px-5"
+                >
+                  {currentRoom?.imagesCollection?.items?.map(
+                    (image, index) =>
+                      image?.url && (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{
+                            duration: 0.4,
+                            delay: 0.5 + index * 0.1,
+                            ease: 'easeOut',
+                          }}
+                        >
+                          <Item
+                            original={image?.url || ''}
+                            thumbnail={image?.url || ''}
+                            width={image?.width || 0}
+                            height={image?.height || 0}
+                          >
+                            {({ ref, open }) => (
+                              <motion.img
+                                ref={ref}
+                                onClick={open}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                src={image?.url || ''}
+                                alt={`photo-${index + 1}`}
+                                width={image?.width || 0}
+                                height={image?.height || 0}
+                                className="h-40 w-full cursor-pointer rounded-[20px] object-cover"
+                              />
+                            )}
+                          </Item>
+                        </motion.div>
+                      ),
+                  )}
+                </Slider>
+              </Gallery>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   )
