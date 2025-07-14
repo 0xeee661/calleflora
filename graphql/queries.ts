@@ -88,3 +88,23 @@ export const roomSeo = gql`
     }
   }
 `
+
+export const allies = gql`
+  query Allies($locale: String) {
+    alliesCollection(locale: $locale, limit: 1) {
+      items {
+        listCollection(limit: 1) {
+          items {
+            name
+            description
+            benefit
+            category
+            image {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+`
