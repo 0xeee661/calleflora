@@ -159,7 +159,7 @@ export default function page() {
 
       <section className="mx-auto grid max-w-6xl grid-cols-2 grid-rows-4 gap-8 p-8 py-24">
         {/* Gimnasio */}
-        <div className="relative row-span-2 bg-neutral-900">
+        <div className="relative col-span-2 h-[267px] bg-neutral-900 md:col-span-1 md:row-span-2 md:h-auto">
           <img
             src="/images/espacios/gimnasio.png"
             alt="Gimnasio"
@@ -173,7 +173,7 @@ export default function page() {
         </div>
 
         {/* Piscina */}
-        <div className="relative row-span-2 bg-neutral-900">
+        <div className="relative col-span-2 h-[267px] bg-neutral-900 md:col-span-1 md:row-span-2 md:h-auto">
           <img
             src="/images/espacios/piscina.png"
             alt="Piscina"
