@@ -74,7 +74,7 @@ export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
             playsInline
             preload="none"
             className="absolute inset-0 h-full min-h-screen w-full object-cover align-top"
-            poster={currentRoom.background?.url || undefined}
+            poster={currentRoom.poster?.url || undefined}
           >
             {currentRoom.background?.url && (
               <source src={currentRoom.background?.url} type="video/mp4" />

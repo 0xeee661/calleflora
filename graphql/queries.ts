@@ -22,6 +22,9 @@ export const rooms = gql`
               url
               contentType
             }
+            poster {
+              url
+            }
           }
         }
       }
