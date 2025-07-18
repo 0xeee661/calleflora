@@ -7,7 +7,7 @@ import { GrLocation } from 'react-icons/gr'
 export const Footer = () => {
   return (
     <footer className="flex snap-start items-center justify-center px-8 py-15">
-      <div className="flex w-full max-w-[1075px] flex-col items-center justify-between gap-10 md:flex-row">
+      <div className="flex w-full max-w-[1075px] flex-col items-center justify-around gap-10 md:flex-row">
         <Link href="/">
           <Image src={logo} alt="Calle Flora Logo" />
         </Link>

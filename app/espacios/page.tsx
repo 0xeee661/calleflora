@@ -1,6 +1,6 @@
 import { ArrowUpRight } from 'lucide-react'
 
-export default function page() {
+export default function EspaciosPage() {
   const flowers = [
     {
       name: 'Protea',
