@@ -22,7 +22,7 @@ export const Footer = () => {
           </p>
           <ul className="flex flex-col gap-6 md:flex-row">
             <li className="font-playfair text-base underline">
-              <Link href="/politica-de-privacidad">
+              <Link href="/politicas-de-privacidad">
                 Política de privacidad y Tratamiento de datos
               </Link>
             </li>
