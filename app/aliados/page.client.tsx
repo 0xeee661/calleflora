@@ -14,7 +14,7 @@ export const AlliesPage = ({ allies }: { allies: Maybe<Ally>[] }) => {
 
   return (
     <main>
-      <section className="relative h-[50vh] snap-start md:h-screen">
+      <section className="relative h-[60vh] snap-start md:h-screen">
         <video
           autoPlay
           muted
@@ -28,7 +28,7 @@ export const AlliesPage = ({ allies }: { allies: Maybe<Ally>[] }) => {
         </video>
         {/* Overlay for play and reservar buttons */}
         <div className="absolute inset-0 z-1 flex flex-col items-center justify-center bg-gradient-to-b from-transparent via-transparent to-[var(--background)]">
-          <h1 className="font-playfair text-4xl font-bold font-normal md:text-9xl">
+          <h1 className="font-playfair text-4xl font-normal md:text-9xl">
             ALIADOS
           </h1>
         </div>

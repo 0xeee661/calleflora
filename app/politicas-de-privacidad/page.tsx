@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function PoliticasDePrivacidadPage() {
   return (
-    <main className="">
-      <section className="relative grid h-[50vh] grid-cols-1 overflow-hidden bg-gradient-to-b from-transparent via-transparent to-[var(--background)] md:h-screen md:grid-cols-2 xl:grid-cols-[1fr_750px]">
+    <main>
+      <section className="relative grid h-[60vh] grid-cols-1 overflow-hidden bg-gradient-to-b from-transparent via-transparent to-[var(--background)] md:h-screen md:grid-cols-2 xl:grid-cols-[1fr_750px]">
         <img
           src="/images/contacto-form.png"
           alt="Heliconia"

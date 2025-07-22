@@ -42,7 +42,7 @@ export default function EspaciosPage() {
 
   return (
     <main>
-      <section className="relative h-[50vh] snap-start md:h-screen">
+      <section className="relative h-[60vh] snap-start md:h-screen">
         <video
           autoPlay
           muted

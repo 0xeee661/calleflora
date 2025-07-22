@@ -33,7 +33,7 @@ export default function RestaurantePage() {
 
   return (
     <main>
-      <section className="relative h-[50vh] snap-start overflow-hidden md:h-screen">
+      <section className="relative h-[60vh] snap-start overflow-hidden md:h-screen">
         <Image
           src="/images/restaurante/restaurante-bg.png"
           alt="Restaurante"

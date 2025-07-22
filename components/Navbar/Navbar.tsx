@@ -23,7 +23,7 @@ export default function Navbar() {
     >
       <NavDrawer />
 
-      <Link href="/">
+      <Link href="/" className="justify-self-center">
         <Image
           src={logo}
           alt="Calle Flora Logo"
