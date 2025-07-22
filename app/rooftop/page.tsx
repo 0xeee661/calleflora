@@ -21,8 +21,8 @@ const Rooftop = () => {
         </video>
         <div className="absolute inset-0 z-1 flex flex-col items-center justify-center bg-gradient-to-b from-[var(--background)] via-transparent to-[var(--background)] p-8 lg:p-20">
           <h1 className="font-playfair w-full text-right text-6xl leading-none lg:text-[10.625rem]">
-            ROOF <br />
-            <span className="italic">TOP</span>
+            SELVA <br />
+            <span className="italic">NEGRA</span>
           </h1>
           <p className="font-playfair mt-8 w-full text-left text-xl lg:mt-0 lg:text-2xl">
             La ciudad susurra abajo, pero arriba,

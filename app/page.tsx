@@ -4,6 +4,7 @@ import Hero from '@/components/home/Hero'
 import Map from '@/components/home/Map'
 import { Rooms } from '@/components/Rooms'
 import { getRooms } from '@/lib/api'
+import FloatingMenu from '@/components/FloatingMenu/FloatingMenu'
 
 export default async function Home() {
   const data = await getRooms({})
@@ -21,6 +22,8 @@ export default async function Home() {
 
         {/*         <Rooftop /> */}
       </div>
+
+      <FloatingMenu />
     </>
   )
 }

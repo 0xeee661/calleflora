@@ -6,56 +6,21 @@ import Link from 'next/link'
 import styles from './NavDrawer.module.css'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
+import { whatsappLink } from '@/constants/app'
+import { navigationLinks } from '@/constants/navigation'
 
 export default function NavDrawer() {
   const [drawerOpen, setDrawerOpen] = useState(false)
 
-  const modalLinks = [
-    {
-      label: 'Inicio',
-      href: '/',
-    },
-    {
-      label: 'Habitaciones',
-      href: '/',
-    },
-    {
-      label: 'Experiencias',
-      href: '/',
-    },
-    {
-      label: 'Restaurantes',
-      href: '/',
-    },
-    {
-      label: 'Contácto',
-      href: '/contacto',
-    },
-    {
-      label: 'About Us',
-      href: '/',
-    },
-  ]
-
   const socialLinks = [
     {
       label: 'Instagram',
-      href: '/',
+      href: 'https://www.instagram.com/calleflorahotel/',
       icon: '/svgs/social/instagram.svg',
     },
     {
-      label: 'Twitter',
-      href: '/',
-      icon: '/svgs/social/twitter.svg',
-    },
-    {
-      label: 'TikTok',
-      href: '/',
-      icon: '/svgs/social/tiktok.svg',
-    },
-    {
       label: 'WhatsApp',
-      href: '/',
+      href: `${whatsappLink}&text=%C2%A1Hola!%20Quiero%20reservar%20a%20la%20mejor%20tarifa`,
       icon: '/svgs/social/whatsapp.svg',
     },
   ]
@@ -85,11 +50,12 @@ export default function NavDrawer() {
             </span>
 
             <nav className="flex flex-col gap-6 text-center">
-              {modalLinks.map(link => (
+              {navigationLinks.map(link => (
                 <Link
                   key={link.label}
                   className="font-playfair text-right text-5xl text-white italic transition hover:opacity-80"
                   href={link.href}
+                  onClick={() => setDrawerOpen(false)}
                 >
                   {link.label}
                 </Link>

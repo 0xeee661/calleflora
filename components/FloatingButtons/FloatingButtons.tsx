@@ -1,9 +1,10 @@
+import { whatsappLink } from '@/constants/app'
 import { FaWhatsapp } from 'react-icons/fa'
 
 const FloatingButtons = () => {
   return (
     <a
-      href="https://api.whatsapp.com/send?phone=573117447836&text=%C2%A1Hola!%20Quiero%20reservar%20a%20la%20mejor%20tarifa"
+      href={`${whatsappLink}&text=%C2%A1Hola!%20Quiero%20reservar%20a%20la%20mejor%20tarifa`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="WhatsApp"
