@@ -10,6 +10,7 @@
     "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^16.1.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.515.0",
     "motion": "^12.23.3",

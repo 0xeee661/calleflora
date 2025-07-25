@@ -1,9 +1,11 @@
 import { PrimaryButton } from '@/components/Button/PrimaryButton'
+import { whatsappLink } from '@/constants/app'
 import a1 from '@/public/images/a1.png'
 import a2 from '@/public/images/a2.png'
 import a3 from '@/public/images/a3.png'
 import rooftop from '@/public/images/rooftop2.png'
 import Image from 'next/image'
+import RooftopReservation from '@/components/RooftopReservation/RooftopReservation'
 
 const Rooftop = () => {
   return (
@@ -66,7 +68,7 @@ const Rooftop = () => {
         <Image src={rooftop} alt="Rooftop" className="w-full" />
         <div className="absolute inset-0 z-1 flex flex-col items-center justify-center bg-gradient-to-b from-[var(--background)] via-transparent to-[var(--background)]">
           <PrimaryButton
-            href="https://api.whatsapp.com/send?phone=573117447836"
+            href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
             className="relative z-2"
@@ -84,6 +86,11 @@ const Rooftop = () => {
             className="absolute top-[-200px] left-0"
           />
         </div>
+      </section>
+
+      {/* Sección de reservas */}
+      <section className="relative flex min-h-screen items-center justify-center">
+        <RooftopReservation className="relative z-10" />
       </section>
     </main>
   )

@@ -1,4 +1,4 @@
-import { allies, roomData, rooms, roomSeo } from '@/graphql/queries'
+import { allies, legalData, roomData, rooms, roomSeo } from '@/graphql/queries'
 import { Query } from '@/types/graphql/graphql'
 import { getGqlString } from '@/utils/helpers/getGqlString'
 import type { TypedDocumentNode } from '@graphql-typed-document-node/core'
@@ -76,4 +76,17 @@ export const getAllies = async ({ preview, locale }: GetData) => {
     variables: { locale },
   })
   return response.data.alliesCollection?.items[0]?.listCollection?.items
+}
+
+export const getLegalData = async ({
+  preview,
+  id,
+  locale,
+}: GetData & { id: string }) => {
+  const response = await fetchGraphQL({
+    query: legalData,
+    preview,
+    variables: { id, locale },
+  })
+  return response.data.legal
 }

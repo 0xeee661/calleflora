@@ -32,6 +32,17 @@ export const rooms = gql`
   }
 `
 
+export const legalData = gql`
+  query LegalData($id: String!, $locale: String) {
+    legal(id: $id, locale: $locale) {
+      title
+      content {
+        json
+      }
+    }
+  }
+`
+
 export const roomsSlugs = gql`
   query RoomsSlugs {
     roomCollection {

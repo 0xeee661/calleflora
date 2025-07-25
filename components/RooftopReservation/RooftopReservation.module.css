@@ -1,0 +1,3 @@
+.no_calendar_icon::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
