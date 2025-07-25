@@ -24,7 +24,7 @@ export default async function PoliticasDePrivacidadPage() {
         </div>
       </section>
 
-      <p className="mx-auto max-w-6xl px-10 py-20 text-2xl md:text-3xl">
+      <p className="mx-auto max-w-6xl px-10 py-20 md:text-2xl md:text-3xl">
         {documentToReactComponents(data?.content?.json)}
       </p>
     </main>
