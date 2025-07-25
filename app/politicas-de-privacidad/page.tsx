@@ -17,7 +17,7 @@ export default async function PoliticasDePrivacidadPage() {
 
         <div className="flex flex-col items-center justify-center">
           <h1 className="font-playfair text-center text-4xl text-white md:text-7xl lg:text-8xl xl:text-9xl">
-            Politicas de
+            Políticas de
             <br />
             Privacidad
           </h1>
