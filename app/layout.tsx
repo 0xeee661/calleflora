@@ -20,7 +20,17 @@ const quicksand = Quicksand({
 
 export const metadata: Metadata = {
   title: 'Calle Flora Hotel',
-  description: 'Un proyecto de inversión hotelero único como nuestras flores',
+  description: 'Un hotel que hace homenaje a la eterna primavera',
+  openGraph: {
+    images: [
+      {
+        url: '/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Calle Flora Hotel',
+      },
+    ],
+  },
 }
 
 export default function RootLayout({
