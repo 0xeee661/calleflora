@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: '/images/og-image.jpg',
+        url: 'https://www.calleflorahotel.com/images/og.jpg',
         width: 1200,
         height: 630,
         alt: 'Calle Flora Hotel',
