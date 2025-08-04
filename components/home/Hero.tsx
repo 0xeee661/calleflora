@@ -7,7 +7,7 @@ export default function Hero() {
     <main className="relative h-screen snap-start">
       <div className="absolute inset-0 -z-10">
         <video
-          src="/videos/home.mp4"
+          src="/videos/home.mov"
           autoPlay
           muted
           loop
