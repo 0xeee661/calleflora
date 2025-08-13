@@ -10,6 +10,8 @@ import 'slick-carousel/slick/slick-theme.css'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { applyItalicPattern } from '@/lib/utils'
 import { motion, AnimatePresence } from 'motion/react'
+import Image from 'next/image'
+import logo from '@/public/images/logo.png'
 
 type ArrowProps = {
   className: string
@@ -51,7 +53,7 @@ export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 3,
           slidesToScroll: 1,
         },
       },
@@ -83,7 +85,7 @@ export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
         )}
       </AnimatePresence>
 
-      <nav className="absolute top-30 right-8 z-10 flex justify-center gap-4">
+      <nav className="absolute top-30 right-1/2 z-10 flex translate-x-1/2 justify-center gap-4 md:right-8 md:translate-x-0">
         {rooms.map(room => (
           <motion.button
             key={room?.type}
@@ -108,7 +110,7 @@ export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -50 }}
               transition={{ duration: 0.5, ease: 'easeOut' }}
-              className="flex flex-col items-center justify-start gap-4 md:flex-row"
+              className="my-16 flex flex-col items-center justify-start gap-4 md:my-0 md:flex-row"
             >
               {currentRoom?.imageLetter?.url && (
                 <motion.img
@@ -124,7 +126,7 @@ export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="font-playfair max-w-[356px] text-2xl"
+                className="font-playfair max-w-[356px] text-center md:text-left md:text-2xl"
               >
                 {applyItalicPattern(currentRoom?.description || '')}
               </motion.p>
@@ -175,7 +177,7 @@ export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
                                 alt={`photo-${index + 1}`}
                                 width={image?.width || 0}
                                 height={image?.height || 0}
-                                className="h-40 w-full cursor-pointer rounded-[20px] object-cover"
+                                className="h-[103px] w-full cursor-pointer rounded-[20px] object-cover md:h-40"
                               />
                             )}
                           </Item>
@@ -187,6 +189,11 @@ export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
             </motion.div>
           )}
         </AnimatePresence>
+        <Image
+          src={logo}
+          alt="Calle Flora Logo"
+          className="mx-auto h-8 w-max"
+        />
       </div>
     </section>
   )

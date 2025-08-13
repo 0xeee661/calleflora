@@ -1,6 +1,8 @@
 /* import Reservation from '../Reservation/Reservation' */
 
 import { bookingLink } from '@/constants/app'
+import Image from 'next/image'
+import logo from '@/public/images/logo.png'
 
 export default function Hero() {
   return (
@@ -16,14 +18,19 @@ export default function Hero() {
       </div>
 
       <div className="relative flex min-h-[calc(100vh-109px)] flex-col items-center justify-center">
+        <Image
+          src={logo}
+          alt="Calle Flora Logo"
+          className="h-8 w-auto md:hidden"
+        />
         <div className="mt-10 flex flex-col items-center justify-between gap-0">
-          <h1 className="font-playfair text-foreground text-center text-[4rem] tracking-wide select-none sm:text-nowrap md:text-[6.5625rem]">
-            <span className="font-semibold italic">UN HOTEL</span>
+          <h1 className="font-playfair text-foreground text-center text-[4rem] font-bold tracking-wide select-none sm:text-nowrap md:text-[6.5625rem]">
+            UN HO<span className="font-semibold italic">TEL</span>
           </h1>
 
           <div className="font-playfair text-foreground max-w-2xl text-center tracking-wide select-none">
-            <span className="block text-[2rem] leading-snug font-light text-white/90 sm:text-2xl">
-              que hace homenaje a la{' '}
+            <span className="block text-2xl leading-snug font-light text-white/90 sm:text-2xl md:text-[2rem]">
+              que hace homenaje a la <br className="md:hidden" />
               <i className="font-black">eterna primavera</i>.
             </span>
 

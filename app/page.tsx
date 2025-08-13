@@ -5,23 +5,25 @@ import Map from '@/components/home/Map'
 import { Rooms } from '@/components/Rooms'
 import { getRooms } from '@/lib/api'
 import FloatingMenu from '@/components/FloatingMenu/FloatingMenu'
+import { Spaces } from '@/components/home/Spaces'
+import { Rooftop } from '@/components/home/Rooftop'
 
 export default async function Home() {
   const data = await getRooms({})
 
   return (
     <>
-      <div>
-        <Hero />
+      <Hero />
 
-        <Rooms rooms={data?.listCollection?.items || []} />
+      <Rooms rooms={data?.listCollection?.items || []} />
 
-        {/*         <QuotePage /> */}
+      {/*         <QuotePage /> */}
 
-        <Map />
+      <Map />
 
-        {/*         <Rooftop /> */}
-      </div>
+      <Spaces />
+
+      <Rooftop />
 
       <FloatingMenu />
     </>

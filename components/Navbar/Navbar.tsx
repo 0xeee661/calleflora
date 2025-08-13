@@ -19,11 +19,11 @@ export default function Navbar() {
   }, [])
   return (
     <header
-      className={`fixed top-0 left-0 z-[100] grid w-full grid-cols-[1fr_2fr_1fr] items-center px-8 transition-all duration-300 ${isScrolled ? 'bg-black/80 py-6' : 'py-11'}`}
+      className={`fixed top-0 left-0 z-[100] flex w-full items-center justify-between px-8 transition-all duration-300 md:grid md:grid-cols-[1fr_2fr_1fr] ${isScrolled ? 'bg-black/80 py-6' : 'py-11'}`}
     >
       <NavDrawer />
 
-      <Link href="/" className="justify-self-center">
+      <Link href="/" className="hidden justify-self-center md:block">
         <Image
           src={logo}
           alt="Calle Flora Logo"

@@ -11,7 +11,7 @@ export default function FloatingMenu() {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 1, x: 100 }}
       transition={{ duration: 0.3, ease: 'easeOut' }}
-      className="fixed right-8 bottom-40 z-50 hidden lg:block"
+      className="fixed top-1/2 right-8 z-50 hidden -translate-y-1/2 lg:block"
     >
       <div className="relative">
         {/* Background blur effect */}
