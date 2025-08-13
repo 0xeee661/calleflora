@@ -192,7 +192,7 @@ export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
         <Image
           src={logo}
           alt="Calle Flora Logo"
-          className="mx-auto h-8 w-max"
+          className="mx-auto h-8 w-max md:hidden"
         />
       </div>
     </section>
