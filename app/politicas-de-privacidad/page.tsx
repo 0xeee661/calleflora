@@ -7,16 +7,16 @@ export default async function PoliticasDePrivacidadPage() {
 
   return (
     <main>
-      <section className="relative grid h-[60vh] grid-cols-1 overflow-hidden bg-gradient-to-b from-transparent via-transparent to-[var(--background)] md:h-screen md:grid-cols-2 xl:grid-cols-[1fr_750px]">
+      <section className="relative grid h-[50vh] grid-cols-1 overflow-hidden bg-gradient-to-b from-transparent via-transparent to-[var(--background)] md:h-screen md:grid-cols-2 xl:grid-cols-[1fr_750px]">
         <img
           src="/images/contacto-form.png"
           alt="Heliconia"
-          className="absolute -bottom-24 -z-10 w-auto object-cover brightness-95 md:-left-[22%] md:h-[1500px]"
+          className="absolute -top-96 -left-12 -z-10 h-[800px] w-auto rotate-45 object-cover brightness-95 md:-left-[22%] md:h-[1500px] md:rotate-0"
         />
         <div className="flex items-center justify-center"></div>
 
         <div className="flex flex-col items-center justify-center">
-          <h1 className="font-playfair text-center text-4xl text-white md:text-7xl lg:text-8xl xl:text-9xl">
+          <h1 className="font-playfair text-center text-5xl text-white md:text-7xl lg:text-8xl xl:text-9xl">
             Políticas de
             <br />
             Privacidad
@@ -24,9 +24,9 @@ export default async function PoliticasDePrivacidadPage() {
         </div>
       </section>
 
-      <p className="mx-auto max-w-6xl px-10 py-20 md:text-2xl md:text-3xl">
+      <div className="mx-auto max-w-6xl px-10 py-20 text-center text-2xl md:text-3xl">
         {documentToReactComponents(data?.content?.json)}
-      </p>
+      </div>
     </main>
   )
 }
