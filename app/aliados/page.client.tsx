@@ -14,7 +14,7 @@ export const AlliesPage = ({ allies }: { allies: Maybe<Ally>[] }) => {
 
   return (
     <main>
-      <section className="relative h-[60vh] snap-start md:h-screen">
+      <section className="relative h-[100vh] snap-start md:h-screen">
         <video
           autoPlay
           muted
@@ -28,11 +28,29 @@ export const AlliesPage = ({ allies }: { allies: Maybe<Ally>[] }) => {
         </video>
         {/* Overlay for play and reservar buttons */}
         <div className="absolute inset-0 z-1 flex flex-col items-center justify-center bg-gradient-to-b from-transparent via-transparent to-[var(--background)]">
-          <h1 className="font-playfair text-4xl font-normal md:text-9xl">
+          <h1 className="font-playfair text-7xl font-normal md:text-9xl">
             ALIADOS
           </h1>
+          <button className="font-quicksand mt-5 cursor-pointer rounded-2xl border-2 border-white px-12 py-1.5 text-xl font-bold transition-colors duration-300 hover:bg-white/10 md:hidden">
+            RESERVAR
+          </button>
+
+          <p className="font-quicksand mt-32 w-full px-10 text-start text-base font-medium md:hidden">
+            CONOCE LAS <br />
+            <span className="font-playfair text-5xl font-normal">
+              CATEGORÍAS
+            </span>
+          </p>
+
+          {/* make a vertical line */}
+          <div className="absolute bottom-0 left-1/2 mt-10 h-[200px] w-0.5 -translate-x-1/2 rounded-full bg-white" />
         </div>
       </section>
+
+      <p className="font-playfair mt-12 px-8 text-center text-xl md:hidden">
+        Conoce las ofertas y alianzas de nuestro hotel
+      </p>
+
       <section className="p-8">
         <div className="mx-auto grid w-full max-w-[910px] grid-cols-2 gap-4 md:grid-cols-4 md:gap-[74px]">
           <CategoryButton
