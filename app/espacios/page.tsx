@@ -1,42 +1,73 @@
 import { ArrowUpRight } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 export default function EspaciosPage() {
   const flowers = [
     {
       name: 'Protea',
       image: '/flores/PROTEA.png',
+      class: 'md:col-start-1',
     },
     {
       name: 'Gerbera',
       image: '/flores/GERBERA.png',
+      class: 'md:col-start-3',
     },
     {
       name: 'Orquídea',
       image: '/flores/ORQUIDEA.png',
+      class: 'md:col-start-5',
     },
     {
       name: 'Anturio',
       image: '/flores/ANTURIO.png',
+      class: 'md:col-start-7',
     },
     {
       name: 'Heliconia',
       image: '/flores/HELICONIA.png',
+      class: 'md:col-start-2',
     },
     {
       name: 'Passiflora',
       image: '/flores/PASSIFLORA.png',
+      class: 'md:col-start-4',
     },
     {
       name: 'Flor Mariposa',
       image: '/flores/FLOR-MARIPOSA.png',
+      class: 'md:col-start-6',
     },
     {
       name: 'Cardo Azul',
       image: '/flores/CARDO-AZUL.png',
+      class: 'md:col-start-3',
     },
     {
       name: 'Delfinios',
       image: '/flores/DELFINIOS.png',
+      class: 'md:col-start-5',
+    },
+  ]
+
+  const spaces = [
+    {
+      name: 'Gimnasio',
+      image: '/images/espacios/gimnasio.png',
+      additionalClass: 'md:col-span-1 md:row-span-2 md:h-auto',
+    },
+    {
+      name: 'Piscina',
+      image: '/images/espacios/piscina.png',
+      additionalClass: 'md:col-span-1 md:row-span-2 md:h-auto',
+    },
+    {
+      name: 'Amelier',
+      image: '/images/espacios/amelier.png',
+    },
+    {
+      name: 'Restaurante',
+      image: '/images/espacios/restaurante.png',
     },
   ]
 
@@ -58,7 +89,7 @@ export default function EspaciosPage() {
           <h1 className="font-playfair text-4xl font-normal md:text-[170px]">
             ESPACIOS
           </h1>
-          <p className="font-playfair max-w-2xl text-center text-2xl md:text-3xl">
+          <p className="font-playfair max-w-2xl px-8 text-center text-2xl md:text-3xl">
             <i className="font-semibold">Calle Flora</i> no es un solo lugar: es
             un conjunto de <i className="font-semibold">atmósferas</i> que
             florecen a su propio ritmo.
@@ -66,17 +97,19 @@ export default function EspaciosPage() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl grid-cols-1 gap-16 p-8 py-24 md:grid-cols-2 xl:grid-cols-[370px_1fr]">
-        <div className="flex flex-col gap-4">
+      <section className="mx-auto grid max-w-6xl grid-cols-1 gap-16 py-24 max-md:relative md:grid-cols-2 md:px-8 xl:grid-cols-[370px_1fr]">
+        <div className="z-20 flex flex-col items-end gap-4 pr-5 md:items-start">
           <div>
-            <h2 className="font-playfair text-6xl font-normal">Fachada</h2>
+            <h2 className="font-playfair text-right text-5xl font-normal sm:text-5xl md:text-left md:text-6xl">
+              Fachada
+            </h2>
 
-            <h3 className="font-playfair mt-4 text-6xl font-semibold italic">
+            <h3 className="font-playfair mt-4 text-right text-5xl font-semibold italic sm:text-5xl md:text-left md:text-6xl">
               Kinética
             </h3>
           </div>
 
-          <p className="font-playfair mt-5 text-3xl leading-relaxed italic">
+          <p className="font-playfair mt-5 max-w-2/3 text-right text-xl leading-relaxed text-pretty italic sm:text-2xl md:max-w-full md:text-left md:text-3xl">
             Uno de los mayores atractivos y diferenciales del hotel, son sus
             ventanas y su apertura. La fachada kinética se asemeja a flores, que
             al estar totalmente abiertas, sin duda hacen que los transeuntes y
@@ -85,14 +118,14 @@ export default function EspaciosPage() {
           </p>
         </div>
 
-        <div className="relative h-[850px] w-full">
+        <div className="absolute inset-0 z-10 w-full md:relative md:h-[850px]">
           <video
             autoPlay
             muted
             loop
             playsInline
             preload="none"
-            className="h-full w-full object-cover align-top"
+            className="h-full w-full object-cover align-top opacity-40 md:opacity-100"
           >
             <source src="/videos/fachada-espacios.mp4" type="video/mp4" />
           </video>
@@ -101,46 +134,16 @@ export default function EspaciosPage() {
         </div>
       </section>
 
-      <section className="py-14">
-        <div className="mx-auto grid max-w-6xl grid-cols-4 items-center justify-items-center gap-4">
-          {flowers.slice(0, 4).map(flower => (
-            <div key={flower.name} className="flex flex-col items-center gap-2">
-              <img
-                src={flower.image}
-                alt={flower.name}
-                className="h-full w-full object-cover"
-                style={{
-                  filter: 'drop-shadow(0 8px 24px rgba(255,255,255,0.45))',
-                }}
-              />
-              <p className="font-playfair text-center text-2xl font-medium tracking-wide text-white italic">
-                {flower.name}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <div className="mx-auto mt-16 grid max-w-4xl grid-cols-3 items-center justify-items-center gap-4">
-          {flowers.slice(4, 7).map(flower => (
-            <div key={flower.name} className="flex flex-col items-center gap-2">
-              <img
-                src={flower.image}
-                alt={flower.name}
-                className="h-full w-full object-cover"
-                style={{
-                  filter: 'drop-shadow(0 8px 24px rgba(255,255,255,0.45))',
-                }}
-              />
-              <p className="font-playfair text-center text-2xl font-medium tracking-wide text-white italic">
-                {flower.name}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <div className="mx-auto mt-16 grid max-w-xl grid-cols-2 items-center justify-items-center gap-4">
-          {flowers.slice(7, 10).map(flower => (
-            <div key={flower.name} className="flex flex-col items-center gap-2">
+      <section className="px-8 py-14">
+        <div className="mx-auto grid max-w-6xl grid-cols-[repeat(auto-fill,minmax(150px,1fr))] items-center justify-items-center gap-4 sm:grid-cols-3 md:grid-cols-7 md:grid-rows-3">
+          {flowers.map(flower => (
+            <div
+              key={flower.name}
+              className={cn(
+                `flex flex-col items-center gap-2 md:min-w-[150px]`,
+                flower.class,
+              )}
+            >
               <img
                 src={flower.image}
                 alt={flower.name}
@@ -158,61 +161,26 @@ export default function EspaciosPage() {
       </section>
 
       <section className="mx-auto grid max-w-6xl grid-cols-2 grid-rows-4 gap-8 p-8 py-24">
-        {/* Gimnasio */}
-        <div className="relative col-span-2 h-[267px] bg-neutral-900 md:col-span-1 md:row-span-2 md:h-auto">
-          <img
-            src="/images/espacios/gimnasio.png"
-            alt="Gimnasio"
-            className="h-full w-full rounded-3xl object-cover"
-          />
-          <h1 className="font-playfair absolute bottom-0 p-4 text-5xl text-white">
-            Gimnasio
-          </h1>
+        {spaces.map(space => (
+          <div
+            key={space.name}
+            className={cn(
+              'relative col-span-2 h-[267px] bg-neutral-900',
+              space.additionalClass,
+            )}
+          >
+            <img
+              src={space.image}
+              alt={`${space.name} imagen`}
+              className="h-full w-full rounded-3xl object-cover brightness-75"
+            />
+            <h1 className="font-playfair absolute bottom-0 p-4 text-3xl text-white sm:text-5xl">
+              {space.name}
+            </h1>
 
-          <LinkButton />
-        </div>
-
-        {/* Piscina */}
-        <div className="relative col-span-2 h-[267px] bg-neutral-900 md:col-span-1 md:row-span-2 md:h-auto">
-          <img
-            src="/images/espacios/piscina.png"
-            alt="Piscina"
-            className="h-full w-full rounded-3xl object-cover"
-          />
-          <h1 className="font-playfair absolute bottom-0 p-4 text-5xl text-white">
-            Piscina
-          </h1>
-
-          <LinkButton />
-        </div>
-
-        {/* Amelier */}
-        <div className="relative col-span-2 h-[267px] bg-neutral-900">
-          <img
-            src="/images/espacios/amelier.png"
-            alt="Amelier"
-            className="h-full w-full rounded-3xl object-cover brightness-75"
-          />
-          <h1 className="font-playfair absolute bottom-0 p-4 text-5xl text-white">
-            Amelier
-          </h1>
-
-          <LinkButton />
-        </div>
-
-        {/* Restaurante */}
-        <div className="relative col-span-2 h-[267px] bg-neutral-900">
-          <img
-            src="/images/espacios/restaurante.png"
-            alt="Restaurante"
-            className="h-full w-full rounded-3xl object-cover brightness-75"
-          />
-          <h1 className="font-playfair absolute bottom-0 p-4 text-5xl text-white">
-            Restaurante
-          </h1>
-
-          <LinkButton />
-        </div>
+            <LinkButton />
+          </div>
+        ))}
       </section>
     </main>
   )
@@ -222,8 +190,8 @@ export default function EspaciosPage() {
 
 function LinkButton() {
   return (
-    <div className="absolute -right-2 -bottom-2 flex size-20 items-center justify-center rounded-full bg-[var(--background)] text-2xl text-white">
-      <button className="flex size-14 cursor-pointer items-center justify-center rounded-full bg-white p-2 text-2xl text-black transition hover:scale-105 active:scale-95">
+    <div className="absolute -right-2 -bottom-2 flex size-16 items-center justify-center rounded-full bg-[var(--background)] text-2xl text-white sm:size-20">
+      <button className="flex size-10 cursor-pointer items-center justify-center rounded-full bg-white p-2 text-2xl text-black transition hover:scale-105 active:scale-95 sm:size-14">
         <ArrowUpRight className="size-7" />
       </button>
     </div>
