@@ -4,19 +4,19 @@ import React from 'react'
 export default function AboutUsPage() {
   return (
     <main>
-      <section className="relative h-[60vh] snap-start md:h-screen">
+      <section className="relative h-[50vh] snap-start md:h-screen">
         <Image
           src="/images/about-us/about-us-bg.png"
           alt="Heliconia"
-          className="absolute inset-0 h-full min-h-[50vh] w-full object-cover align-top opacity-40 md:min-h-screen"
+          className="absolute inset-0 h-full min-h-[50vh] w-full object-cover align-top brightness-75 md:min-h-screen"
           fill
         />
 
-        <div className="absolute inset-0 z-1 flex flex-col items-center justify-center gap-7 bg-gradient-to-b from-transparent via-transparent to-[var(--background)] md:gap-10">
-          <h1 className="font-playfair text-5xl font-normal sm:text-7xl md:text-[150px]">
+        <div className="absolute inset-0 z-1 flex flex-col items-center justify-end gap-7 bg-gradient-to-b from-transparent via-transparent to-[var(--background)] max-md:py-14 md:justify-center md:gap-10">
+          <h1 className="font-playfair px-8 text-center text-7xl font-normal sm:text-7xl md:text-[150px]">
             ABOUT US
           </h1>
-          <p className="font-playfair max-w-3xl px-8 text-center text-2xl md:text-5xl">
+          <p className="font-playfair hidden max-w-3xl px-8 text-center text-2xl md:block md:text-5xl">
             Si algo en ti quiere <i className="font-semibold">florecer aquí</i>,
             escríbenos. Las puertas están abiertas,{' '}
             <i className="font-semibold">como pétalos al sol</i>.
@@ -24,7 +24,7 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      <section className="font-playfair mx-auto grid max-w-7xl gap-8 px-8 md:grid-cols-2 md:gap-14">
+      <section className="font-playfair mx-auto grid max-w-7xl gap-8 px-8 text-center md:grid-cols-2 md:gap-14 md:text-start">
         <p className="text-2xl text-pretty md:text-4xl">
           10 PISOS DE DISEÑO ARQUITECTÓNICO IMPECABLE
           <br />
