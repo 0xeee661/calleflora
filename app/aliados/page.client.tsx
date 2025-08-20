@@ -105,13 +105,13 @@ const CategoryButton = ({
   const isActive = category === currentCategory
   return (
     <button
-      className={`flex min-h-[100px] cursor-pointer flex-col items-center justify-center rounded-4xl border-2 border-white md:min-h-[216px] ${
+      className={`flex min-h-[170px] cursor-pointer flex-col items-center justify-center rounded-4xl border-2 border-white md:min-h-[216px] ${
         isActive ? 'bg-black' : 'bg-transparent'
       }`}
       onClick={() => setCurrentCategory(category)}
     >
       <span className="font-quicksand text-xl">{category}</span>
-      <Image src={flower} alt="flower" className="hidden md:block" />
+      <Image src={flower} alt="flower" className="block" />
     </button>
   )
 }
