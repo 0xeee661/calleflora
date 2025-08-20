@@ -61,7 +61,7 @@ export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
   }
 
   return (
-    <section className="relative h-screen snap-start">
+    <section className="relative min-h-screen snap-start">
       <AnimatePresence mode="wait">
         {currentRoom && (
           <motion.video
@@ -101,7 +101,7 @@ export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
         ))}
       </nav>
 
-      <div className="relative z-1 flex h-full flex-col gap-8 p-4 py-50 md:justify-end md:p-16">
+      <div className="relative z-1 flex h-full flex-col gap-8 p-4 py-50 pb-20 md:justify-end md:p-16">
         <AnimatePresence mode="wait">
           {currentRoom && (
             <motion.div
