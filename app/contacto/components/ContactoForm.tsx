@@ -23,8 +23,8 @@ export default function ContactoForm() {
   }
 
   return (
-    <div className="relative grid grid-cols-2 rounded-[47px] rounded-bl-[312px] border-2">
-      <div className="absolute -left-20 h-[850px] w-fit">
+    <div className="relative grid rounded-[47px] rounded-bl-[312px] md:grid-cols-2 md:border-2">
+      <div className="absolute -left-20 hidden h-[850px] w-fit md:block">
         <Image
           src="/images/contacto-form.png"
           alt="Contacto background"
@@ -38,7 +38,7 @@ export default function ContactoForm() {
       <div></div>
 
       <form
-        className="flex flex-col gap-2 p-28"
+        className="flex flex-col gap-2 p-10 py-0 sm:p-20 lg:p-28"
         autoComplete="one-time-code"
         onSubmit={handleSubmit}
       >
