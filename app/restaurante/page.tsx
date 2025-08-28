@@ -1,8 +1,22 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowDownRight } from 'lucide-react'
 import { PrimaryButton } from '../../components/Button/PrimaryButton'
 import { bookingLink } from '../../constants/app'
+import image1 from '@/public/images/restaurante/1.jpg'
+import image2 from '@/public/images/restaurante/2.jpg'
+import image3 from '@/public/images/restaurante/3.jpg'
+import image4 from '@/public/images/restaurante/4.jpg'
+import image5 from '@/public/images/restaurante/5.jpg'
+import image6 from '@/public/images/restaurante/6.jpg'
+import image7 from '@/public/images/restaurante/7.jpg'
+import image8 from '@/public/images/restaurante/8.jpg'
+import image9 from '@/public/images/restaurante/9.jpg'
+import image10 from '@/public/images/restaurante/10.jpg'
+import { Gallery, Item } from 'react-photoswipe-gallery'
+import 'photoswipe/dist/photoswipe.css'
 
 export default function RestaurantePage() {
   const scheduleData = [
@@ -37,7 +51,7 @@ export default function RestaurantePage() {
     <main>
       <section className="relative h-[90vh] snap-start overflow-hidden md:h-screen">
         <Image
-          src="/images/restaurante/restaurante-bg.png"
+          src="/images/restaurante/9.jpg"
           alt="Restaurante"
           className="absolute inset-0 h-full w-full object-cover object-center brightness-50"
           fill
@@ -110,6 +124,119 @@ export default function RestaurantePage() {
             height={678}
           />
         </div>
+      </section>
+
+      <section className="px-4 py-12 md:px-12">
+        <Gallery>
+          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-x-7 gap-y-6 md:h-[700px] md:grid-cols-5 md:grid-rows-5">
+            <Item
+              original={image1.src}
+              thumbnail={image1.src}
+              width={image1.width}
+              height={image1.height}
+            >
+              {({ ref, open }) => (
+                <img
+                  ref={ref}
+                  onClick={open}
+                  src={image1.src}
+                  alt="Imagen del restaurante"
+                  className="h-full w-full cursor-pointer object-cover md:col-span-2 md:row-span-full"
+                  style={{ maxHeight: '700px' }}
+                />
+              )}
+            </Item>
+            <Item
+              original={image2.src}
+              thumbnail={image2.src}
+              width={image2.width}
+              height={image2.height}
+            >
+              {({ ref, open }) => (
+                <img
+                  ref={ref}
+                  onClick={open}
+                  src={image2.src}
+                  alt="Imagen del restaurante"
+                  className="h-full w-full cursor-pointer object-cover md:col-span-2 md:row-span-2"
+                  style={{ maxHeight: '700px' }}
+                />
+              )}
+            </Item>
+            <Item
+              original={image3.src}
+              thumbnail={image3.src}
+              width={image3.width}
+              height={image3.height}
+            >
+              {({ ref, open }) => (
+                <img
+                  ref={ref}
+                  onClick={open}
+                  src={image3.src}
+                  alt="Imagen del restaurante"
+                  className="h-full w-full cursor-pointer object-cover md:row-span-3"
+                  style={{ maxHeight: '700px' }}
+                />
+              )}
+            </Item>
+            <Item
+              original={image4.src}
+              thumbnail={image4.src}
+              width={image4.width}
+              height={image4.height}
+            >
+              {({ ref, open }) => (
+                <img
+                  ref={ref}
+                  onClick={open}
+                  src={image4.src}
+                  alt="Imagen del restaurante"
+                  className="h-full w-full cursor-pointer object-cover md:col-span-2 md:row-span-3"
+                  style={{ maxHeight: '700px' }}
+                />
+              )}
+            </Item>
+            <Item
+              original={image5.src}
+              thumbnail={image5.src}
+              width={image5.width}
+              height={image5.height}
+            >
+              {({ ref, open }) => (
+                <img
+                  ref={ref}
+                  onClick={open}
+                  src={image5.src}
+                  alt="Imagen del restaurante"
+                  className="h-full w-full cursor-pointer object-cover md:col-span-1 md:row-span-2"
+                  style={{ maxHeight: '700px' }}
+                />
+              )}
+            </Item>
+            {/* Imágenes extra solo para la galería */}
+            {[image6, image7, image8, image9, image10].map(img => (
+              <Item
+                key={img.src}
+                original={img.src}
+                thumbnail={img.src}
+                width={img.width}
+                height={img.height}
+              >
+                {({ ref, open }) => (
+                  <img
+                    ref={ref}
+                    onClick={open}
+                    src={img.src}
+                    alt="Imagen del restaurante"
+                    className="h-[300px] w-full cursor-pointer object-cover md:hidden"
+                    style={{ maxHeight: '700px' }}
+                  />
+                )}
+              </Item>
+            ))}
+          </div>
+        </Gallery>
       </section>
 
       <section className="relative h-screen snap-start md:mt-20">
