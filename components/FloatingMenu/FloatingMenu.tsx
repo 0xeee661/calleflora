@@ -3,8 +3,44 @@
 import Link from 'next/link'
 import { motion } from 'motion/react'
 import { navigationLinks } from '@/constants/navigation'
+import { useEffect, useState } from 'react'
 
-export default function FloatingMenu() {
+interface FloatingMenuProps {
+  hideOnBuilding?: boolean
+}
+
+export default function FloatingMenu({
+  hideOnBuilding = true,
+}: FloatingMenuProps) {
+  const [isVisible, setIsVisible] = useState(true)
+
+  useEffect(() => {
+    if (!hideOnBuilding) return
+
+    const buildingSection = document.querySelector('[data-section="building"]')
+    if (!buildingSection) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(!entry.isIntersecting)
+      },
+      {
+        threshold: 0.1, // Trigger when 10% of the building section is visible
+        // rootMargin: '-50px 0px', // Add some margin to make it feel more natural
+      },
+    )
+
+    observer.observe(buildingSection)
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [hideOnBuilding])
+
+  if (!isVisible) {
+    return null
+  }
+
   return (
     <motion.div
       initial={{ opacity: 1, x: 100 }}
