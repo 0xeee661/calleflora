@@ -1,55 +1,8 @@
 import { ArrowUpRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { flowers } from '@/data/flowers'
 
 export default function EspaciosPage() {
-  const flowers = [
-    {
-      name: 'Protea',
-      image: '/flores/PROTEA.png',
-      class: 'md:col-start-1',
-    },
-    {
-      name: 'Gerbera',
-      image: '/flores/GERBERA.png',
-      class: 'md:col-start-3',
-    },
-    {
-      name: 'Orquídea',
-      image: '/flores/ORQUIDEA.png',
-      class: 'md:col-start-5',
-    },
-    {
-      name: 'Anturio',
-      image: '/flores/ANTURIO.png',
-      class: 'md:col-start-7',
-    },
-    {
-      name: 'Heliconia',
-      image: '/flores/HELICONIA.png',
-      class: 'md:col-start-2',
-    },
-    {
-      name: 'Passiflora',
-      image: '/flores/PASSIFLORA.png',
-      class: 'md:col-start-4',
-    },
-    {
-      name: 'Flor Mariposa',
-      image: '/flores/FLOR-MARIPOSA.png',
-      class: 'md:col-start-6',
-    },
-    {
-      name: 'Cardo Azul',
-      image: '/flores/CARDO-AZUL.png',
-      class: 'md:col-start-3',
-    },
-    {
-      name: 'Delfinios',
-      image: '/flores/DELFINIOS.png',
-      class: 'md:col-start-5',
-    },
-  ]
-
   const spaces = [
     {
       name: 'Gimnasio',

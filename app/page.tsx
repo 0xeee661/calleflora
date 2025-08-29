@@ -7,6 +7,7 @@ import { getRooms } from '@/lib/api'
 import FloatingMenu from '@/components/FloatingMenu/FloatingMenu'
 import { Spaces } from '@/components/home/Spaces'
 import { Rooftop } from '@/components/home/Rooftop'
+import Building from '@/components/Building/Building'
 
 export default async function Home() {
   const data = await getRooms({})
@@ -14,6 +15,8 @@ export default async function Home() {
   return (
     <>
       <Hero />
+
+      <Building />
 
       <Rooms rooms={data?.listCollection?.items || []} />
 

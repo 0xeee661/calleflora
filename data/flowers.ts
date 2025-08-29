@@ -1,0 +1,66 @@
+export const flowers = [
+  {
+    name: 'Protea',
+    image: '/flores/PROTEA.png',
+    imageNoBg: '/flores/no-bg/PROTEA-no-bg.png',
+    class: 'md:col-start-1',
+    description: 'Elige protea si amas la libertad y la diversidad',
+  },
+  {
+    name: 'Gerbera',
+    image: '/flores/GERBERA.png',
+    imageNoBg: '/flores/no-bg/GERBERA-no-bg.png',
+    class: 'md:col-start-3',
+    description: 'Elige gerbera si amas la alegría y la diversidad',
+  },
+  {
+    name: 'Orquídea',
+    image: '/flores/ORQUIDEA.png',
+    imageNoBg: '/flores/no-bg/ORQUIDEA-no-bg.png',
+    class: 'md:col-start-5',
+    description: 'Elige orquídea si amas la elegancia y la sofisticación',
+  },
+  {
+    name: 'Anturio',
+    image: '/flores/ANTURIO.png',
+    imageNoBg: '/flores/no-bg/ANTURIO-no-bg.png',
+    class: 'md:col-start-7',
+    description:
+      'Elige anturio si amas sin medida y tu forma de cuidar es tu mayor',
+  },
+  {
+    name: 'Heliconia',
+    image: '/flores/HELICONIA.png',
+    imageNoBg: '/flores/no-bg/HELICONIA-no-bg.png',
+    class: 'md:col-start-2',
+    description: 'Elige heliconia si amas la libertad y la diversidad',
+  },
+  {
+    name: 'Passiflora',
+    image: '/flores/PASSIFLORA.png',
+    imageNoBg: '/flores/no-bg/PASSIFLORA-no-bg.png',
+    class: 'md:col-start-4',
+    description: 'Elige passiflora si amas la libertad y la diversidad',
+  },
+  {
+    name: 'Flor Mariposa',
+    image: '/flores/FLOR-MARIPOSA.png',
+    imageNoBg: '/flores/no-bg/FLOR-MARIPOSA-no-bg.png',
+    class: 'md:col-start-6',
+    description: 'Elige flor mariposa si amas la libertad y la diversidad',
+  },
+  {
+    name: 'Cardo Azul',
+    image: '/flores/CARDO-AZUL.png',
+    imageNoBg: '/flores/no-bg/CARDO-AZUL-no-bg.png',
+    class: 'md:col-start-3',
+    description: 'Elige cardo azul si amas la libertad y la diversidad',
+  },
+  {
+    name: 'Delfinios',
+    image: '/flores/DELFINIOS.png',
+    imageNoBg: '/flores/no-bg/DELFINIOS-no-bg.png',
+    class: 'md:col-start-5',
+    description: 'Elige delfinios si amas la libertad y la diversidad',
+  },
+]
