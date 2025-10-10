@@ -5,6 +5,8 @@ import { cn } from '../lib/utils'
 import FloatingButtons from '@/components/FloatingButtons/FloatingButtons'
 import Navbar from '@/components/Navbar/Navbar'
 import { Footer } from '@/components/Footer/Footer'
+import { GoogleAnalitics } from '@/components/Google/GoogleAnalitics'
+
 
 const playfairDisplay = Playfair_Display({
   variable: '--font-playfair-display',
@@ -51,6 +53,7 @@ export default function RootLayout({
         <Navbar />
         <FloatingButtons />
         {children}
+        <GoogleAnalitics />
         <Footer />
       </body>
     </html>

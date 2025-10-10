@@ -11,7 +11,6 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { applyItalicPattern } from '@/lib/utils'
 import { motion, AnimatePresence } from 'motion/react'
 import Image from 'next/image'
-import logo from '@/public/images/logo.png'
 
 type ArrowProps = {
   className: string
@@ -190,8 +189,10 @@ export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
           )}
         </AnimatePresence>
         <Image
-          src={logo}
+          src="/images/logo.png"
           alt="Calle Flora Logo"
+          width={200}
+          height={32}
           className="mx-auto h-8 w-max md:hidden"
         />
       </div>

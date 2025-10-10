@@ -20,18 +20,35 @@ async function fetchGraphQL({
 }): Promise<{
   data: Query
 }> {
-  return fetch(
-    `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
+  if (!process.env.CONTENTFUL_SPACE_ID || !process.env.CONTENTFUL_ACCESS_TOKEN) {
+    console.error('Contentful environment variables are not set')
+    return { data: {} as Query }
+  }
+
+  try {
+    const response = await fetch(
+      `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
+        },
+        body: JSON.stringify({ query: getGqlString(query), variables }),
+        next: next || { revalidate: 3600 },
       },
-      body: JSON.stringify({ query: getGqlString(query), variables }),
-      next,
-    },
-  ).then(response => response.json())
+    )
+    
+    if (!response.ok) {
+      console.error(`GraphQL request failed: ${response.status} ${response.statusText}`)
+      return { data: {} as Query }
+    }
+    
+    return response.json()
+  } catch (error) {
+    console.error('Error fetching from Contentful:', error)
+    return { data: {} as Query }
+  }
 }
 
 export const getRooms = async ({ preview, locale }: GetData) => {
@@ -83,10 +100,15 @@ export const getLegalData = async ({
   id,
   locale,
 }: GetData & { id: string }) => {
-  const response = await fetchGraphQL({
-    query: legalData,
-    preview,
-    variables: { id, locale },
-  })
-  return response.data.legal
+  try {
+    const response = await fetchGraphQL({
+      query: legalData,
+      preview,
+      variables: { id, locale },
+    })
+    return response?.data?.legal || null
+  } catch (error) {
+    console.error('Error fetching legal data:', error)
+    return null
+  }
 }
