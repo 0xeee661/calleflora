@@ -245,7 +245,7 @@ export default function RestaurantePage() {
           muted
           loop
           playsInline
-          preload="none"
+          preload="auto"
           className="absolute inset-0 h-full min-h-screen w-full object-cover align-top opacity-70 brightness-75"
         >
           <source src="/videos/restaurante.mp4" type="video/mp4" />

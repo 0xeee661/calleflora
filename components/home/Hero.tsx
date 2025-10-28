@@ -20,7 +20,10 @@ export default function Hero() {
         v.muted = true
         ;(v as HTMLVideoElement & { playsInline?: boolean }).playsInline = true
         v.setAttribute('playsinline', '')
+        v.setAttribute('webkit-playsinline', '')
         v.setAttribute('muted', '')
+        // Reload to ensure attributes are applied before playback attempt
+        v.load()
         await v.play()
       } catch {
         setVideoError(true)
