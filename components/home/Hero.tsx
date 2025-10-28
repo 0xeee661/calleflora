@@ -17,6 +17,10 @@ export default function Hero() {
     const tryPlay = async () => {
       try {
         // iOS/Android autoplay requires muted + playsInline
+        v.muted = true
+        ;(v as HTMLVideoElement & { playsInline?: boolean }).playsInline = true
+        v.setAttribute('playsinline', '')
+        v.setAttribute('muted', '')
         await v.play()
       } catch {
         setVideoError(true)
@@ -29,6 +33,18 @@ export default function Hero() {
       return () => v.removeEventListener('canplay', onCanPlay)
     } else {
       void tryPlay()
+    }
+    // As a fallback on iOS: trigger play on first user interaction
+    const onUserInteract = () => {
+      void tryPlay()
+      document.removeEventListener('touchstart', onUserInteract)
+      document.removeEventListener('click', onUserInteract)
+    }
+    document.addEventListener('touchstart', onUserInteract, { once: true })
+    document.addEventListener('click', onUserInteract, { once: true })
+    return () => {
+      document.removeEventListener('touchstart', onUserInteract)
+      document.removeEventListener('click', onUserInteract)
     }
   }, [])
   return (
@@ -49,7 +65,7 @@ export default function Hero() {
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="auto"
             onError={() => setVideoError(true)}
             className="h-full w-full object-cover opacity-[0.47]"
           >
