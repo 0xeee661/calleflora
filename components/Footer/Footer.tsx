@@ -18,7 +18,7 @@ export const Footer = () => {
             Cl. 9A #37-48, El Poblado
           </p>
           <p className="font-playfair flex items-center gap-2">
-            <LuPhone /> +57 604 322 8907
+            <LuPhone /> +57 311 7447836
           </p>
           <ul className="flex flex-col gap-6 md:flex-row">
             <li className="font-playfair text-base underline">
