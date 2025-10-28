@@ -6,6 +6,7 @@ import FloatingButtons from '@/components/FloatingButtons/FloatingButtons'
 import Navbar from '@/components/Navbar/Navbar'
 import { Footer } from '@/components/Footer/Footer'
 import { GoogleAnalitics } from '@/components/Google/GoogleAnalitics'
+import { BookingWidgetScript } from '@/components/Booking/BookingWidgetScript'
 
 
 const playfairDisplay = Playfair_Display({
@@ -54,6 +55,8 @@ export default function RootLayout({
         <FloatingButtons />
         {children}
         <GoogleAnalitics />
+        {/* Booking widget as bottom bar (provider default) */}
+        <BookingWidgetScript rootId="" />
         <Footer />
       </body>
     </html>

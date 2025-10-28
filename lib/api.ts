@@ -43,8 +43,19 @@ async function fetchGraphQL({
       console.error(`GraphQL request failed: ${response.status} ${response.statusText}`)
       return { data: {} as Query }
     }
-    
-    return response.json()
+    // Parse JSON defensively to avoid runtime errors when body is empty/invalid
+    try {
+      const json = await response.json()
+      // Ensure structure is as expected
+      if (!json || typeof json !== 'object' || !('data' in json)) {
+        console.error('GraphQL JSON shape unexpected or empty')
+        return { data: {} as Query }
+      }
+      return json as { data: Query }
+    } catch (parseError) {
+      console.error('Failed to parse GraphQL JSON response:', parseError)
+      return { data: {} as Query }
+    }
   } catch (error) {
     console.error('Error fetching from Contentful:', error)
     return { data: {} as Query }

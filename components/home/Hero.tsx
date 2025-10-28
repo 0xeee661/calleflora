@@ -1,8 +1,10 @@
+"use client"
+
 /* import Reservation from '../Reservation/Reservation' */
 
-import { bookingLink } from '@/constants/app'
 import Image from 'next/image'
 import logo from '@/public/images/logo.png'
+import { BookingWidgetScript } from '@/components/Booking/BookingWidgetScript'
 
 export default function Hero() {
   return (
@@ -38,14 +40,7 @@ export default function Hero() {
               — Diario de Lecumberri, Álvaro Mutis
             </span> */}
 
-            <a
-              href={bookingLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-flex cursor-pointer rounded-md bg-white px-4 py-2 text-black"
-            >
-              RESERVAR
-            </a>
+            
           </div>
         </div>
       </div>
