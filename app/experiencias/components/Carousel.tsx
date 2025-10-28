@@ -33,7 +33,7 @@ export default function ExperienciasCarousel() {
     }
     window.addEventListener('keydown', handleKey)
     return () => window.removeEventListener('keydown', handleKey)
-  }, [current])
+  }, [prev, next])
 
   React.useEffect(() => {
     const updateVisible = () => {

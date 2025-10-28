@@ -21,6 +21,23 @@ export function BookingWidgetScript({ rootId = 'paraty-booking-root', onClose }:
     const existingScript = document.getElementById(scriptId)
     const existingLink = document.getElementById(styleId)
 
+    // Determine provider language from browser
+    const providerLanguage = (() => {
+      try {
+        const nav = (typeof navigator !== 'undefined' && navigator.language) || 'en'
+        const lang = nav.toLowerCase()
+        if (lang.startsWith('es')) return 'SPANISH'
+        if (lang.startsWith('en')) return 'ENGLISH'
+        if (lang.startsWith('pt')) return 'PORTUGUESE'
+        if (lang.startsWith('fr')) return 'FRENCH'
+        if (lang.startsWith('de')) return 'GERMAN'
+        if (lang.startsWith('it')) return 'ITALIAN'
+        return 'ENGLISH'
+      } catch {
+        return 'ENGLISH'
+      }
+    })()
+
     // Helper to ensure provider stylesheet is present
     const ensureStylesheet = (): Promise<void> => {
       if (existingLink) return Promise.resolve()
@@ -64,12 +81,12 @@ export function BookingWidgetScript({ rootId = 'paraty-booking-root', onClose }:
                 const isDictionary = u.pathname.includes('/utils') && u.searchParams.get('action') === 'complete_dictionary'
                 const isProviderOrLocal = isLocalDev || isProvider || u.origin === host
                 if (isDictionary && isProviderOrLocal) {
-                  u.searchParams.set('language', 'SPANISH')
+                  u.searchParams.set('language', providerLanguage)
                   finalUrl = u.toString()
                 }
               } catch {}
 
-              return originalFetch(finalUrl as any, init)
+              return originalFetch(finalUrl, init)
             }
             anyWin.__paratyFetchPatched = true
           }

@@ -22,24 +22,24 @@ export function BookingWidgetSelfTest() {
 
     const originalFetch = window.fetch.bind(window)
 
-    window.fetch = async (input: RequestInfo | URL, init?: RequestInit) => {
+    window.fetch = async (input: RequestInfo | URL, init?: RequestInit): Promise<Response> => {
       const url = typeof input === 'string' ? input : input.toString()
       const isProvider = url.includes(PROVIDER_HOST)
       if (!isProvider) {
-        return originalFetch(input as any, init)
+        return originalFetch(input, init)
       }
 
       try {
-        const res = await originalFetch(input as any, init)
+        const res = await originalFetch(input, init)
         setLogs(prev => [
           { url, status: res.status, ok: res.ok, timestamp: new Date().toISOString() },
           ...prev.slice(0, 29),
         ])
         // do not consume body; provider needs it. We only log status.
         return res
-      } catch (error: any) {
+      } catch (error: unknown) {
         setLogs(prev => [
-          { url, error: String(error?.message || error), timestamp: new Date().toISOString() },
+          { url, error: String((error as Error)?.message || error), timestamp: new Date().toISOString() },
           ...prev.slice(0, 29),
         ])
         throw error

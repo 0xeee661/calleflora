@@ -4,7 +4,6 @@
 
 import Image from 'next/image'
 import logo from '@/public/images/logo.png'
-import { BookingWidgetScript } from '@/components/Booking/BookingWidgetScript'
 
 export default function Hero() {
   return (

@@ -12,7 +12,7 @@ export function ParatyDebugPanel() {
   const [loadedDetail, setLoadedDetail] = React.useState<LoadedDetail | null>(
     null,
   )
-  const [messages, setMessages] = React.useState<any[]>([])
+  const [messages, setMessages] = React.useState<unknown[]>([])
 
   React.useEffect(() => {
     const onLoaded = (e: Event) => {
