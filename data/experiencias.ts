@@ -12,7 +12,7 @@ export const experiencias = [
     recommendations: [
       'Recomendaciones para el museo de botero',
       '35 min / 5km',
-      '+57 320 334 5678',
+      '+57 311 7447 836',
       'Consumo en el lugar',
     ],
     distance: '35 min / 5km',
@@ -30,7 +30,7 @@ export const experiencias = [
     recommendations: [
       'Recomendaciones para el jardin botanico',
       '35 min / 5km',
-      '+57 320 334 5678',
+      '+57 311 7447 836',
       'Consumo en el lugar',
     ],
     distance: '35 min / 5km',
@@ -48,7 +48,7 @@ export const experiencias = [
     recommendations: [
       'Recomendaciones para el parque',
       '35 min / 5km',
-      '+57 320 334 5678',
+      '+57 311 7447 836',
       'Consumo en el lugar',
     ],
     distance: '35 min / 5km',
@@ -66,7 +66,7 @@ export const experiencias = [
     recommendations: [
       'Recomendaciones para la piedra del peñon',
       '35 min / 5km',
-      '+57 320 334 5678',
+      '+57 311 7447 836',
       'Consumo en el lugar',
     ],
     distance: '35 min / 5km',
@@ -84,7 +84,7 @@ export const experiencias = [
     recommendations: [
       'Recomendaciones para la habitacion #5',
       '35 min / 5km',
-      '+57 320 334 5678',
+      '+57 311 7447 836',
       'Consumo en el lugar',
     ],
     distance: '35 min / 5km',

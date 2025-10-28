@@ -2,20 +2,60 @@
 
 /* import Reservation from '../Reservation/Reservation' */
 
+import React from 'react'
 import Image from 'next/image'
 import logo from '@/public/images/logo.png'
 
 export default function Hero() {
+  const videoRef = React.useRef<HTMLVideoElement | null>(null)
+  const [videoError, setVideoError] = React.useState(false)
+
+  React.useEffect(() => {
+    const v = videoRef.current
+    if (!v) return
+    // Try to play; if it fails (format/autoplay), fallback to image
+    const tryPlay = async () => {
+      try {
+        // iOS/Android autoplay requires muted + playsInline
+        await v.play()
+      } catch {
+        setVideoError(true)
+      }
+    }
+    // If metadata not ready, attempt after canplay
+    if (v.readyState < 2) {
+      const onCanPlay = () => tryPlay()
+      v.addEventListener('canplay', onCanPlay, { once: true })
+      return () => v.removeEventListener('canplay', onCanPlay)
+    } else {
+      void tryPlay()
+    }
+  }, [])
   return (
     <main className="relative h-screen snap-start">
       <div className="absolute inset-0 -z-10">
-        <video
-          src="/videos/home.mov"
-          autoPlay
-          muted
-          loop
-          className="h-full w-full object-cover opacity-[0.47]"
-        />
+        {videoError ? (
+          // Fallback estático si el video no puede reproducirse en el dispositivo
+          <img
+            src="/images/og.jpg"
+            alt="Calle Flora Background"
+            className="h-full w-full object-cover opacity-[0.47]"
+          />
+        ) : (
+          <video
+            ref={videoRef}
+            src="/videos/home.mov"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            onError={() => setVideoError(true)}
+            className="h-full w-full object-cover opacity-[0.47]"
+          >
+            {/* Si el navegador no soporta el formato, mostrará el fallback */}
+          </video>
+        )}
       </div>
 
       <div className="relative flex min-h-[calc(100vh-109px)] flex-col items-center justify-center">
