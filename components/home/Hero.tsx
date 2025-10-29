@@ -5,51 +5,15 @@
 import React from 'react'
 import Image from 'next/image'
 import logo from '@/public/images/logo.png'
+import { useVideoAutoplay } from '@/lib/hooks/useVideoAutoplay'
 
 export default function Hero() {
-  const videoRef = React.useRef<HTMLVideoElement | null>(null)
   const [videoError, setVideoError] = React.useState(false)
-
-  React.useEffect(() => {
-    const v = videoRef.current
-    if (!v) return
-    // Try to play; if it fails (format/autoplay), fallback to image
-    const tryPlay = async () => {
-      try {
-        // iOS/Android autoplay requires muted + playsInline
-        v.muted = true
-        ;(v as HTMLVideoElement & { playsInline?: boolean }).playsInline = true
-        v.setAttribute('playsinline', '')
-        v.setAttribute('webkit-playsinline', '')
-        v.setAttribute('muted', '')
-        // Reload to ensure attributes are applied before playback attempt
-        v.load()
-        await v.play()
-      } catch {
-        setVideoError(true)
-      }
+  const videoRef = useVideoAutoplay<HTMLVideoElement>({
+    onPlayError: (error) => {
+      console.warn('Hero video autoplay failed:', error)
     }
-    // If metadata not ready, attempt after canplay
-    if (v.readyState < 2) {
-      const onCanPlay = () => tryPlay()
-      v.addEventListener('canplay', onCanPlay, { once: true })
-      return () => v.removeEventListener('canplay', onCanPlay)
-    } else {
-      void tryPlay()
-    }
-    // As a fallback on iOS: trigger play on first user interaction
-    const onUserInteract = () => {
-      void tryPlay()
-      document.removeEventListener('touchstart', onUserInteract)
-      document.removeEventListener('click', onUserInteract)
-    }
-    document.addEventListener('touchstart', onUserInteract, { once: true })
-    document.addEventListener('click', onUserInteract, { once: true })
-    return () => {
-      document.removeEventListener('touchstart', onUserInteract)
-      document.removeEventListener('click', onUserInteract)
-    }
-  }, [])
+  })
   return (
     <main className="relative h-screen snap-start">
       <div className="absolute inset-0 -z-10">
@@ -63,7 +27,6 @@ export default function Hero() {
         ) : (
           <video
             ref={videoRef}
-            src="/videos/home.mov"
             autoPlay
             muted
             loop
@@ -72,7 +35,8 @@ export default function Hero() {
             onError={() => setVideoError(true)}
             className="h-full w-full object-cover opacity-[0.47]"
           >
-            {/* Si el navegador no soporta el formato, mostrará el fallback */}
+            <source src="/videos/home.mp4" type="video/mp4" />
+            {/* Formato MP4 H.264 compatible con iOS y Android */}
           </video>
         )}
       </div>

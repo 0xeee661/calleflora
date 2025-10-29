@@ -3,8 +3,10 @@ import { ArrowDownRight } from 'lucide-react'
 import Link from 'next/link'
 import { Gallery, Item } from 'react-photoswipe-gallery'
 import 'photoswipe/dist/photoswipe.css'
+import { useVideoAutoplay } from '@/lib/hooks/useVideoAutoplay'
 
 export default function Habitaciones() {
+  const videoRef = useVideoAutoplay<HTMLVideoElement>()
   const dataSource = [
     {
       sourceId: 1, // needed to connect following data with Item component
@@ -89,10 +91,13 @@ export default function Habitaciones() {
     <main className="relative h-screen snap-start">
       <div className="absolute inset-0 -z-10">
         <video
+          ref={videoRef}
           src="/videos/habitaciones.mp4"
           autoPlay
           muted
           loop
+          playsInline
+          preload="auto"
           className="h-full w-full object-cover opacity-[0.47]"
         />
       </div>

@@ -1,14 +1,22 @@
+'use client'
+
 import Link from 'next/link'
+import { useVideoAutoplay } from '@/lib/hooks/useVideoAutoplay'
 
 export const Spaces = () => {
+  const videoRef = useVideoAutoplay<HTMLVideoElement>()
+  
   return (
     <section className="relative h-screen snap-start overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <video
+          ref={videoRef}
           src="/videos/espacios.mp4"
           autoPlay
           muted
           loop
+          playsInline
+          preload="auto"
           className="h-full w-full object-cover opacity-[0.5]"
         />
       </div>

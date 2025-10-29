@@ -1,7 +1,7 @@
 'use client'
 
 import { Maybe, Room } from '@/types/graphql/graphql'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Gallery, Item } from 'react-photoswipe-gallery'
 import 'photoswipe/dist/photoswipe.css'
 import Slider, { Settings } from 'react-slick'
@@ -41,6 +41,76 @@ function SamplePrevArrow({ className, style, onClick }: ArrowProps) {
 
 export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
   const [currentRoom, setCurrentRoom] = useState<Room | null>(rooms[0] || null)
+  const videoRef = useRef<HTMLVideoElement | null>(null)
+  
+  // Autoplay logic for iOS Chrome
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    let hasPlayed = false
+
+    const tryPlay = async () => {
+      if (hasPlayed || !video) return
+
+      try {
+        video.muted = true
+        video.playsInline = true
+        video.defaultMuted = true
+        video.setAttribute('playsinline', '')
+        video.setAttribute('webkit-playsinline', 'true')
+
+        await video.play()
+        hasPlayed = true
+      } catch (error) {
+        console.warn('[Rooms] Video autoplay failed:', error)
+      }
+    }
+
+    // Try immediately if ready
+    if (video.readyState >= 2) {
+      void tryPlay()
+    }
+
+    // Try when can play
+    const onCanPlay = () => void tryPlay()
+    video.addEventListener('canplay', onCanPlay)
+    video.addEventListener('loadeddata', onCanPlay)
+
+    // Intersection Observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && video && !hasPlayed) {
+            void tryPlay()
+          }
+        })
+      },
+      { threshold: 0.25 }
+    )
+
+    observer.observe(video)
+
+    // User interaction
+    const events = ['touchstart', 'click', 'scroll']
+    const onUserInteract = () => {
+      if (!hasPlayed) void tryPlay()
+      events.forEach(e => document.removeEventListener(e, onUserInteract))
+    }
+
+    events.forEach(e => {
+      document.addEventListener(e, onUserInteract, { once: true, passive: true })
+    })
+
+    // Cleanup
+    return () => {
+      video.removeEventListener('canplay', onCanPlay)
+      video.removeEventListener('loadeddata', onCanPlay)
+      observer.disconnect()
+      events.forEach(e => document.removeEventListener(e, onUserInteract))
+    }
+  }, [currentRoom])
+  
   const settings: Settings = {
     infinite: true,
     speed: 500,
@@ -65,6 +135,7 @@ export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
         {currentRoom && (
           <motion.video
             key={currentRoom.type}
+            ref={videoRef}
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.4 }}
             exit={{ opacity: 0 }}
@@ -73,7 +144,7 @@ export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
             muted
             loop
             playsInline
-            preload="none"
+            preload="auto"
             className="absolute inset-0 h-full min-h-screen w-full object-cover align-top"
             poster={currentRoom.poster?.url || undefined}
           >
