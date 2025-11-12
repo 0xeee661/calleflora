@@ -49,8 +49,8 @@ export default function NavDrawer() {
               CALLE <span className="font-semibold italic">FLORA</span>
             </span>
 
-            <nav className="flex flex-col gap-6 text-center">
-              {navigationLinks.map(link => (
+            {/* <nav className="flex flex-col gap-6 text-center">
+              { navigationLinks.map(link => (
                 <Link
                   key={link.label}
                   className="font-playfair text-right text-5xl text-white italic transition hover:opacity-80"
@@ -59,8 +59,8 @@ export default function NavDrawer() {
                 >
                   {link.label}
                 </Link>
-              ))}
-            </nav>
+              )) }
+            </nav> */}
 
             <div className="absolute bottom-14 left-14 flex gap-8">
               {socialLinks.map(link => (

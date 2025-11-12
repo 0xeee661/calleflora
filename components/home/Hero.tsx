@@ -47,15 +47,16 @@ export default function Hero() {
           alt="Calle Flora Logo"
           className="h-8 w-auto md:hidden"
         />
-        <div className="mt-10 flex flex-col items-center justify-between gap-0">
-          <h1 className="font-playfair text-foreground text-center text-[4rem] font-bold tracking-wide select-none sm:text-nowrap md:text-[6.5625rem]">
-            UN HO<span className="font-semibold italic">TEL</span>
+        <div className="mt-10 flex flex-col items-center   justify-between gap-0">
+          <h1 className="font-playfair text-foreground text-center text-[4rem] font-bold 
+          tracking-wide select-none sm:text-nowrap md:text-[6.5625rem]">
+            El Ho<span className="font-semibold italic">tel</span> en Medellín 
           </h1>
 
           <div className="font-playfair text-foreground max-w-2xl text-center tracking-wide select-none">
             <span className="block text-2xl leading-snug font-light text-white/90 sm:text-2xl md:text-[2rem]">
-              que hace homenaje a la <br className="md:hidden" />
-              <i className="font-black">eterna primavera</i>.
+            Inspirado en las flores<br className="md:hidden" />
+              {/*<i className="font-black">flores</i>.*/}
             </span>
 
             {/* <span className="font-quicksand mt-2 block text-sm sm:text-base">

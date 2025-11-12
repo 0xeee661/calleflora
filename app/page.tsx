@@ -5,9 +5,9 @@ import Map from '@/components/home/Map'
 import { Rooms } from '@/components/Rooms'
 import { getRooms } from '@/lib/api'
 import FloatingMenu from '@/components/FloatingMenu/FloatingMenu'
-import { Spaces } from '@/components/home/Spaces'
 import { Rooftop } from '@/components/home/Rooftop'
-import Building from '@/components/Building/Building'
+import Habitacion from '@/components/Habitacion/Habitacion'
+import HotelSpaces from '@/components/Spaces/HotelSpaces'
 
 export default async function Home() {
   const data = await getRooms({})
@@ -16,15 +16,17 @@ export default async function Home() {
     <>
       <Hero />
 
-      <Building />
+      {/* <Building /> */}
 
-      <Rooms rooms={data?.listCollection?.items || []} />
+      <Habitacion />
 
-      {/*         <QuotePage /> */}
+      {/* <Rooms rooms={data?.listCollection?.items || []} /> */}
+
+      {/* <QuotePage /> */}
+
+      <HotelSpaces />
 
       <Map />
-
-      <Spaces />
 
       <Rooftop />
 

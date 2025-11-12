@@ -81,7 +81,8 @@ export default function Building() {
               key={flower.name}
               onClick={() => handleFlowerClick(flower)}
               className={cn(
-                `group flex flex-col items-center gap-2 transition-all duration-300 hover:scale-150 hover:cursor-pointer`,
+                `group flex flex-col items-center gap-2 transition-all duration-300 
+                hover:scale-150 hover:cursor-pointer`,
                 flower.class,
                 selectedFlower?.name === flower.name && 'scale-150',
               )}
@@ -90,7 +91,9 @@ export default function Building() {
               <Image
                 src={flower.image}
                 alt={flower.name}
-                className="h-[30px] w-[30px] object-cover transition-all duration-300 group-hover:drop-shadow-[0_12px_32px_rgba(255,255,255,0.6)] sm:h-[50px] sm:w-[50px]"
+                className="h-[30px] w-[30px] object-cover transition-all duration-300 
+                group-hover:drop-shadow-[0_12px_32px_rgba(255,255,255,0.6)] 
+                sm:h-[50px] sm:w-[50px]"
                 style={{
                   filter: 'drop-shadow(0 8px 24px rgba(255,255,255,0.45))',
                 }}
@@ -101,6 +104,7 @@ export default function Building() {
             </div>
           ))}
         </div>
+
       </div>
 
       <FlowerDialog

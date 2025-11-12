@@ -53,7 +53,7 @@ export default function FloatingMenu({
         {/* Background blur effect */}
         <div className="absolute inset-0 -z-10 rounded-2xl" />
 
-        <nav className="flex flex-col gap-6 p-6">
+        {/*<nav className="flex flex-col gap-6 p-6">
           {navigationLinks.map((link, index) => (
             <motion.div
               key={link.label}
@@ -92,7 +92,7 @@ export default function FloatingMenu({
               </Link>
             </motion.div>
           ))}
-        </nav>
+        </nav> */}
       </div>
     </motion.div>
   )
