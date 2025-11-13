@@ -42,8 +42,9 @@ export default function LocationMapHome({ onSaleProjects, height }: Props) {
     console.log('📍 Proyecto seleccionado:', project.name)
   }
 
-  // ✅ API Key desde variable de entorno
-  const apiKey = process.env.GOOGLE_MAPS_API_KEY || "AIzaSyDAgJ2G7tHzlOG1-fNOaqgRTkv2T_7xgek"
+  // ✅ API Key desde variable de entorno (expuesta al cliente)
+  // IMPORTANTE: en Vercel debe llamarse EXACTAMENTE NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
 
   if (!apiKey) {
     console.error('❌ Google Maps API Key no encontrada. Configure NEXT_PUBLIC_GOOGLE_MAPS_API_KEY en .env')
