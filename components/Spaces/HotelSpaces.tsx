@@ -116,7 +116,7 @@ export default function HotelSpaces() {
       {/* Fondo de imagen del hotel con opacidad */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <Image
-          src="/images/building/building-bg.png"
+          src="/images/room/5.jpg"
           alt="Calle Flora Hotel"
           fill
           priority={false}
