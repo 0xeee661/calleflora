@@ -7,12 +7,6 @@
   --font-quicksand: 'Quicksand', sans-serif;
 }
 
-@font-face {
-  font-family: 'Your Custom Font';
-  src: url('/path/to/your-font.woff2') format('woff2');
-  /* Add other formats for broader browser support */
-}
-
 @theme {
   /* Fuente Playfair principal, enlazada al Next Font */
   --font-playfair: var(--font-playfair-display);

@@ -219,7 +219,7 @@ export default function Habitacion() {
           />
 
           <div className='flex flex-col items-end justify-center w-full'>
-          <div className='font-playfair font-normal
+          <div className='font-playfair font-semibold
           text-[24px]  md:text-[26px] lg:text-[32px] xl:text-[36px] leading-[100%] 
           -mt-20 lg:-mt-20'>
             <p>Cada habitación</p>
@@ -227,7 +227,7 @@ export default function Habitacion() {
             <p>floral</p>
           </div>
           <div className='font-playfair text-extra-light
-          text-[24px] md:text-[26px] lg:text-[32px] xl:text-[36px] lg:pr-4
+          text-[24px] md:text-[26px] lg:text-[32px] xl:text-[36px] lg:pr-6
           pt-4 -mt-16 lg:-mt-2 leading-[100%]'>
             <p>Conoce nuestras</p>
             <p>habitaciones</p>
