@@ -226,9 +226,9 @@ export default function Habitacion() {
             <p>es una experiencia</p>
             <p>floral</p>
           </div>
-          <div className='font-playfair
-          text-[24px] md:text-[26px] lg:text-[32px] xl:text-[36px] lg:pr-4 font-normal
-          pt-4 -mt-16 lg:-mt-2 font-thin leading-[100%]'>
+          <div className='font-playfair text-extra-light
+          text-[24px] md:text-[26px] lg:text-[32px] xl:text-[36px] lg:pr-4
+          pt-4 -mt-16 lg:-mt-2 leading-[100%]'>
             <p>Conoce nuestras</p>
             <p>habitaciones</p>
             <p>y sus amenidades</p>

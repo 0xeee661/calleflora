@@ -3,7 +3,6 @@ import Hero from '@/components/home/Hero'
   import QuotePage from '@/components/home/QuotePage' */
 import Map from '@/components/home/Map'
 import FloatingMenu from '@/components/FloatingMenu/FloatingMenu'
-import { Rooftop } from '@/components/home/Rooftop'
 import Habitacion from '@/components/Habitacion/Habitacion'
 import HotelSpaces from '@/components/Spaces/HotelSpaces'
 
