@@ -21,6 +21,17 @@ body {
   color: var(--foreground);
 }
 
+/* Floating animation for decorative images */
+@keyframes float-y {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+.float-animate {
+  animation: float-y 6s ease-in-out infinite;
+  will-change: transform;
+}
+
 /* Slick slider custom styles */
 .slick-slide {
   padding: 0 7px;

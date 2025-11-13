@@ -11,9 +11,10 @@ import { useCallback, useMemo, useState } from 'react'
 import type { Marker as MarkerType } from '@googlemaps/markerclusterer'
 import { MapProps } from '@vis.gl/react-google-maps'
 import { CarouselApi } from '../ui/carousel'
-import { FinalizedProject, Maybe, OnSaleProject } from '@/types/graphql/graphql'
+import { Maybe} from '@/types/graphql/graphql'
 import { formatPrice } from '../../utils/formatPrice'
 import Link from 'next/link'
+import { FinalizedProject, OnSaleProject } from '@/types/graphql/graphqlExtra'
 
 export default function GoogleMap({
   data,

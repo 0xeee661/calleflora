@@ -12,6 +12,9 @@ type SpaceCard = {
   img: string
 }
 
+// Editable card border width (in pixels)
+const CARD_BORDER_WIDTH_PX = 2
+
 const SPACES: SpaceCard[] = [
   {
     title: 'Restaurante',
@@ -45,13 +48,16 @@ export default function HotelSpaces() {
   const [current, setCurrent] = useState(0)
 
   useEffect(() => {
-    const node = sliderRef.current
-    if (!node) return
-    const children = Array.from(node.children) as HTMLElement[]
+    const slider = sliderRef.current
+    if (!slider) return
+    const children = Array.from(slider.children) as HTMLElement[]
     const target = children[current]
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
-    }
+    if (!target) return
+    // Scroll horizontally within the slider without affecting page vertical scroll
+    const targetCenter = target.offsetLeft + target.offsetWidth / 2
+    const containerCenter = slider.clientWidth / 2
+    const newScrollLeft = Math.max(0, targetCenter - containerCenter)
+    slider.scrollTo({ left: newScrollLeft, behavior: 'smooth' })
   }, [current])
 
   const prev = () => setCurrent(c => (c === 0 ? SPACES.length - 1 : c - 1))
@@ -59,10 +65,10 @@ export default function HotelSpaces() {
 
   return (
     <main
-      className="min-h-screen bg-[#2b2929] flex items-center justify-center"
+      className="h-auto pb-[10%] bg-[#2b2929] flex items-center justify-center"
       data-section="HotelSpaces"
     >
-      <div className="relative w-full max-w-7xl px-6">
+      <div className="relative w-full px-6 max-w-7xl mx-auto flex flex-col items-center">
         {/* Controls */}
         <button
           type="button"
@@ -74,6 +80,7 @@ export default function HotelSpaces() {
         >
           <ArrowLeft className="h-5 w-5" />
         </button>
+        
         <button
           type="button"
           aria-label="Siguiente"
@@ -88,16 +95,17 @@ export default function HotelSpaces() {
         {/* Slider */}
         <div
           ref={sliderRef}
-          className="flex snap-x snap-mandatory overflow-x-auto scrollbar-hide gap-6 px-8"
+          className="flex snap-x snap-mandatory overflow-x-auto scrollbar-hide gap-6 px-8 justify-center items-center mx-auto"
         >
           {SPACES.map((space, idx) => {
             const CardContent = (
               <div
                 className="group relative snap-center w-[260px] 
                 md:w-[340px] lg:w-[210px] h-[420px] 
-                md:h-[520px] overflow-hidden rounded-[24px] border border-white/30 
+                md:h-[520px] overflow-hidden rounded-[24px] border border-white 
                 shadow-[0_8px_30px_rgba(0,0,0,0.3)] transition-all duration-300 
                 hover:w-[260px] md:hover:w-[290px] lg:hover:w-[430px] cursor-pointer"
+                style={{ borderWidth: CARD_BORDER_WIDTH_PX }}
               >
                 <Image
                   src={space.img}
@@ -109,7 +117,7 @@ export default function HotelSpaces() {
                 />
 
                 {/* Top-right action */}
-                <div className="absolute right-3 top-3">
+                <div className="absolute right-3 top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/80 text-black">
                     <ArrowUpRight className="h-4 w-4" />
                   </div>
@@ -149,6 +157,7 @@ export default function HotelSpaces() {
           })}
           
         </div>
+      
       </div>
     </main>
   )

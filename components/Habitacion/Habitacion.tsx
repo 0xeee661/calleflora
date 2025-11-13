@@ -9,6 +9,19 @@ import { X } from 'lucide-react'
 import Link from 'next/link'
 import { ArrowDownRight } from 'lucide-react'
 
+// Ajustes de posición y tamaño de la flor decorativa (migrados a Tailwind)
+import { DecorFlower } from '@/components/common/DecorFlower'
+import { constants } from 'node:buffer'
+
+export const NAV_LABELS: Record<string, string> = {
+  '1': 'Signature Bath',
+  '2': 'Grand Studio',
+  '3': 'Studio',
+  '4': 'Grand',
+  '5': 'Urban',
+  '6': 'Petite',
+}
+
 type RoomCarouselProps = {
   images: string[]
 }
@@ -193,16 +206,24 @@ export default function Habitacion() {
   return (
     <main
       ref={habitacionRef}
-      className="min-h-screen bg-[#2b2929] flex items-center justify-center"
+      className="h-[80vh] bg-[#2b2929] flex items-center justify-center"
       data-section="building"
     >
 
-      <div className='bg-[#201f1f] w-full h-screen my-[10%] mx-[5%] rounded-3xl
-      flex flex-col md:flex-row items-center justify-center gap-8 px-8'>
+      <div className='bg-[#201f1f] w-[80%] h-[65vh] mx-[5%] rounded-3xl
+      flex flex-col md:flex-row items-center justify-center gap-8 '>
 
 
         <div className="border-red-50 w-full md:w-1/2 flex flex-col 
-        items-end justify-end text-3xl">
+        items-end justify-end text-3xl relative">
+          <DecorFlower
+            src="/images/newResources/florA.png"
+            top="-100%"
+            right="10%"
+            width={800}
+            height={700}
+            priority={false}
+          />
 
           <div className='font-bold'>
             <p>Cada habitación</p>

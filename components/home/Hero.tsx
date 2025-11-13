@@ -50,7 +50,7 @@ export default function Hero() {
         <div className="mt-10 flex flex-col items-center   justify-between gap-0">
           <h1 className="font-playfair text-foreground text-center text-[4rem] font-bold 
           tracking-wide select-none sm:text-nowrap md:text-[6.5625rem]">
-            El Ho<span className="font-semibold italic">tel</span> en Medellín 
+            El Hotel en Medellín 
           </h1>
 
           <div className="font-playfair text-foreground max-w-2xl text-center tracking-wide select-none">

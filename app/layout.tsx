@@ -3,7 +3,7 @@ import { Playfair_Display, Quicksand } from 'next/font/google'
 import './globals.css'
 import { cn } from '../lib/utils'
 import FloatingButtons from '@/components/FloatingButtons/FloatingButtons'
-import Navbar from '@/components/Navbar/Navbar'
+import NavbarGate from '@/components/Navbar/NavbarGate'
 import { Footer } from '@/components/Footer/Footer'
 import { GoogleAnalitics } from '@/components/Google/GoogleAnalitics'
 import { BookingWidgetScript } from '@/components/Booking/BookingWidgetScript'
@@ -51,7 +51,7 @@ export default function RootLayout({
           'antialiased',
         )}
       >
-        <Navbar />
+        <NavbarGate />
         <FloatingButtons />
         {children}
         <GoogleAnalitics />
