@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
 
 :root {
   --background: #191919;
@@ -8,16 +7,9 @@
   --font-quicksand: 'Quicksand', sans-serif;
 }
 
-@font-face {
-  font-family: 'Your Custom Font';
-  src: url('/path/to/your-font.woff2') format('woff2');
-  /* Add other formats for broader browser support */
-}
-
 @theme {
   --font-playfair: var(--font-playfair-display);
   --font-quicksand: var(--font-quicksand);
-  font-family: var(--font-playfair-display);
 }
 
 @utility no-scrollbar {
