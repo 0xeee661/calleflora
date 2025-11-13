@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
 
 :root {
   --background: #191919;
@@ -15,9 +14,12 @@
 }
 
 @theme {
+  /* Fuente Playfair principal, enlazada al Next Font */
   --font-playfair: var(--font-playfair-display);
+  /* Alias directo para usar como `font-playfair-display` en componentes */
+  --font-playfair-display: 'Playfair Display', serif;
+
   --font-quicksand: var(--font-quicksand);
-  font-family: var(--font-playfair-display);
 }
 
 @utility no-scrollbar {
