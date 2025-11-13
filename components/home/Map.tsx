@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import florB from '@/public/images/newResources/florB.png'
-import LocationMapHome from '../GoogleMaps/LocationMap'
-import { MOCK_ON_SALE_PROJECTS } from '@/mocks/onSaleProjectsMock'
+import mapImage from '@/public/images/map.png'
 
 // ============================
 // CONFIGURACIÓN EDITABLE FLOR
@@ -9,7 +8,7 @@ import { MOCK_ON_SALE_PROJECTS } from '@/mocks/onSaleProjectsMock'
 // Ancho visible del contenedor (en px)
 const FLOR_WIDTH = 800
 // Altura visible (recorte inferior) del contenedor (en px)
-const FLOR_VISIBLE_HEIGHT = 640
+const FLOR_VISIBLE_HEIGHT = 560
 // Altura total de la imagen (en px)
 const FLOR_FULL_HEIGHT = 1000
 
@@ -43,8 +42,18 @@ const Map = () => {
           />
         </div>
       </div>
-      <div className='order-2 md:order-1 w-full md:w-1/2 h-auto'>
-        <LocationMapHome onSaleProjects={MOCK_ON_SALE_PROJECTS} height="650px" />
+      <div className="order-2 md:order-1 w-full md:w-1/2 h-auto flex items-center justify-center px-4 md:px-0">
+        <div className="w-full max-w-[640px] rounded-3xl overflow-hidden shadow-lg">
+          <Image
+            src={mapImage}
+            alt="Mapa de Medellín con la ubicación de Calle Flora Hotel"
+            className="w-full h-auto object-cover"
+            priority={false}
+          />
+        </div>
+
+        
+        {/* <LocationMapHome onSaleProjects={MOCK_ON_SALE_PROJECTS} height="650px" /> */}
       </div>
 
     </section>
