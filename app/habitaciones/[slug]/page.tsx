@@ -2,6 +2,8 @@ import { getRoomData } from '@/lib/api'
 import { RoomPage } from './page.client'
 import { notFound } from 'next/navigation'
 
+export const dynamic = 'force-dynamic'
+
 type Props = {
   params: Promise<{ slug: string }>
 }

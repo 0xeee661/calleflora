@@ -107,7 +107,7 @@ export default function HotelSpaces() {
             const CardContent = (
               <div
                 className="group relative snap-center w-[260px] 
-                md:w-[340px] lg:w-[150px] xl:w-[210px] h-[420px] 
+                md:w-[340px] lg:w-[150px] xl:w-[150px] h-[420px] 
                 md:h-[520px] overflow-hidden rounded-[24px] border border-white 
                 shadow-[0_8px_30px_rgba(0,0,0,0.3)] transition-all duration-300 
                 hover:w-[260px] md:hover:w-[290px] lg:hover:w-[430px] cursor-pointer"

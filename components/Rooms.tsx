@@ -43,7 +43,8 @@ function SamplePrevArrow({ className, style, onClick }: ArrowProps) {
 export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
   const [currentRoom, setCurrentRoom] = useState<Room | null>(rooms[0] || null)
   const videoRef = useRef<HTMLVideoElement | null>(null)
-  
+  const hasRooms = Array.isArray(rooms) && rooms.length > 0
+
   // Alias visibles en el menú sin afectar el tipo real (selección sigue usando room.type)
   const NAV_ALIAS: Record<string, string> = {
     'XS': 'Signature Bath',
@@ -138,6 +139,16 @@ export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
         },
       },
     ],
+  }
+
+  if (!hasRooms) {
+    return (
+      <section className="relative min-h-screen snap-start flex items-center justify-center p-8">
+        <p className="font-playfair text-2xl text-white/80 text-center">
+          No hay habitaciones disponibles por el momento.
+        </p>
+      </section>
+    )
   }
 
   return (
