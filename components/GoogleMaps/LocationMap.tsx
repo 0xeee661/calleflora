@@ -4,7 +4,7 @@ import {
   type CarouselApi,
 } from '../ui/carousel'
 import { APIProvider } from '@vis.gl/react-google-maps'
-import {  useState } from 'react'
+import {  useEffect, useState } from 'react'
 import GoogleMap from './GoogleMaps'
 import { Maybe } from '../../types/graphql/graphql'
 import { FinalizedProject, OnSaleProject } from '@/types/graphql/graphqlExtra'
@@ -15,7 +15,23 @@ type Props = {
 
 export default function LocationMapHome({ onSaleProjects, height }: Props) {
   const [selectedKey, setSelectedKey] = useState<string | null>(null)
-  const mapHeight = height ?? '650px'
+  const [mapHeight, setMapHeight] = useState<string>(height ?? '650px')
+  
+  // Ajuste responsivo de altura del mapa
+  useEffect(() => {
+    const computeHeight = () => {
+      const w = window.innerWidth
+      if (w <= 325) return '280px'
+      if (w <= 375) return '320px'
+      if (w <= 425) return '360px'
+      if (w <= 768) return '480px'
+      return height ?? '650px'
+    }
+    setMapHeight(computeHeight())
+    const onResize = () => setMapHeight(computeHeight())
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [height])
   
   // 🎯 Mock del Carousel API (opcional, puede ser undefined)
   const api: CarouselApi = undefined

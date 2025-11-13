@@ -6,6 +6,8 @@ import styles from './NavDrawer.module.css'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
 import { whatsappLink } from '@/constants/app'
+import Link from 'next/link'
+import { navigationLinks } from '@/constants/navigation'
 
 export default function NavDrawer() {
   const [drawerOpen, setDrawerOpen] = useState(false)
@@ -39,7 +41,7 @@ export default function NavDrawer() {
             )}
           >
             <X
-              className="absolute top-8 left-8 size-8 cursor-pointer text-white hover:opacity-80"
+              className="absolute top-8 right-8 size-8 cursor-pointer text-white hover:opacity-80"
               onClick={() => setDrawerOpen(false)}
             />
 
@@ -47,18 +49,18 @@ export default function NavDrawer() {
               CALLE <span className="font-semibold italic">FLORA</span>
             </span>
 
-            {/* <nav className="flex flex-col gap-6 text-center">
-              { navigationLinks.map(link => (
+            <nav className="flex flex-col gap-10 text-left w-full px-10 mt-20">
+              {navigationLinks.map(link => (
                 <Link
                   key={link.label}
-                  className="font-playfair text-right text-5xl text-white italic transition hover:opacity-80"
+                  className="font-quicksand text-[34px] leading-none text-[#FFF4B1] transition hover:opacity-90"
                   href={link.href}
                   onClick={() => setDrawerOpen(false)}
                 >
                   {link.label}
                 </Link>
-              )) }
-            </nav> */}
+              ))}
+            </nav>
 
             <div className="absolute bottom-14 left-14 flex gap-8">
               {socialLinks.map(link => (

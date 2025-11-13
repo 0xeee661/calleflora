@@ -20,7 +20,9 @@ export default async function Home() {
 
       {/* <QuotePage /> */}
 
-      <HotelSpaces />
+      <div className="hidden md:block">
+        <HotelSpaces />
+      </div>
 
       <Map />
 

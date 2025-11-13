@@ -12,7 +12,7 @@ export const navigationLinks = [
   },
   {
     label: 'Política de Uso',
-    href: '/s',
+    href: '/',
   },
   {
     label: 'Política de Privacidad',
@@ -20,19 +20,19 @@ export const navigationLinks = [
   },
   {
     label: 'Contáctanos',
-    href: '/',
+    href: '/contacto',
   }
 ] as const
 
 export const Footer = () => {
   return (
-    <footer className="flex snap-start items-center justify-center px-8 py-15 h-[50vh]">
+    <footer className="flex snap-start items-center justify-center px-8 py-15 lg:h-[50vh] h-[80vh]">
       <div className="w-full max-w-[1075px]">
         {/* Menú superior del footer */}
         <nav className="mb-10">
           <ul className="flex flex-col items-center justify-center gap-6 md:flex-row md:gap-16">
             {navigationLinks.map(link => (
-              <li key={link.label} className="font-playfair text-2xl text-white">
+              <li key={link.label} className="font-playfair xl:text-2xl lg:text-xl text-base text-white">
                 <Link href={link.href} className="hover:opacity-80 transition">
                   {link.label}
                 </Link>
@@ -79,16 +79,17 @@ export const Footer = () => {
           </div>
         </div>
         
-        <nav className="flex flex-col gap-4 md:text-[2rem]">
+        <nav className="flex flex-col gap-4 md:text-[2rem] max-w-full">
           <p className="font-playfair flex items-center gap-2">
-            <GrLocation />
-            Cl. 9A #37-48, El Poblado
+            <GrLocation className="flex-shrink-0" />
+            <span className="break-words">Cl. 9A #37-48, El Poblado</span>
           </p>
           <p className="font-playfair flex items-center gap-2">
-            <LuPhone /> +57 311 7447836
+            <LuPhone className="flex-shrink-0" /> 
+            <span className="break-words">+57 311 7447836</span>
           </p>
           <ul className="flex flex-col gap-6 md:flex-row">
-            <li className="font-playfair text-base underline">
+            <li className="font-playfair text-base underline break-words">
               <Link href="/politicas-de-privacidad">
                 Política de privacidad y Tratamiento de datos
               </Link>

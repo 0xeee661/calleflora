@@ -7,7 +7,8 @@ export default function ContactoForm() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: '',
+    company: '',
+    phone: '',
     message: '',
   })
 
@@ -42,6 +43,23 @@ export default function ContactoForm() {
         autoComplete="one-time-code"
         onSubmit={handleSubmit}
       >
+
+        <div className="flex flex-col gap-2">
+          <label htmlFor="company" className="text-white">
+            Empresa *
+          </label>
+          <input
+            type="text"
+            id="company"
+            name="company"
+            autoComplete="organization"
+            required
+            className="rounded-md border border-white/50 bg-black/30 px-3 py-2 text-white placeholder:text-white/40 focus:border-white focus:outline-none"
+            value={formData.company}
+            onChange={handleChange}
+          />
+        </div>
+
         <div className="flex flex-col gap-2">
           <label htmlFor="name" className="text-white">
             Nombre *
@@ -75,22 +93,24 @@ export default function ContactoForm() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="subject" className="text-white">
+          <label htmlFor="phone" className="text-white">
             Celular *
           </label>
           <input
-            type="text"
-            id="subject"
-            name="subject"
+            type="tel"
+            id="phone"
+            name="phone"
+            autoComplete="tel"
+            required
             className="rounded-md border border-white/50 bg-black/30 px-3 py-2 text-white placeholder:text-white/40 focus:border-white focus:outline-none"
-            value={formData.subject}
+            value={formData.phone}
             onChange={handleChange}
           />
         </div>
 
         <div className="flex flex-col gap-2">
           <label htmlFor="message" className="text-white">
-            Obervaciones *
+            Mensaje *
           </label>
           <textarea
             id="message"

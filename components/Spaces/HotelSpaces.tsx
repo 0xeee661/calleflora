@@ -9,6 +9,7 @@ type SpaceCard = {
   title: string
   subtitle?: string
   href?: string
+  url: string
   img: string
 }
 
@@ -20,26 +21,31 @@ const SPACES: SpaceCard[] = [
     title: 'Restaurante',
     href: '/restaurante',
     img: '/images/espacios/restaurante.png',
+    url: '/restaurante',
   },
   {
     title: 'Rooftop',
     subtitle: 'Próximamente',
     img: '/images/rooftop.png',
+    url: '/rooftop',
   },
   {
     title: 'Piscina',
     subtitle: 'Próximamente',
     img: '/images/espacios/piscina.png',
+    url: '/',
   },
   {
     title: 'Gimnasio',
     subtitle: 'Próximamente',
     img: '/images/espacios/gimnasio.png',
+    url: '/',
   },
   {
     title: 'Spa',
     subtitle: 'Próximamente',
     img: '/images/espacios/amelier.png',
+    url: '/',
   },
 ]
 
@@ -65,7 +71,7 @@ export default function HotelSpaces() {
 
   return (
     <main
-      className="h-auto pb-[10%] bg-[#2b2929] flex items-center justify-center"
+      className="h-auto pb-[10%] bg-[#2b2929] flex items-center justify-center overflow-x-hidden"
       data-section="HotelSpaces"
     >
       <div className="relative w-full px-6 max-w-7xl mx-auto flex flex-col items-center">
@@ -95,13 +101,13 @@ export default function HotelSpaces() {
         {/* Slider */}
         <div
           ref={sliderRef}
-          className="flex snap-x snap-mandatory overflow-x-auto scrollbar-hide gap-6 px-8 justify-center items-center mx-auto"
+          className="flex snap-x snap-mandatory overflow-x-auto scrollbar-hide gap-6 px-8 justify-center items-center mx-auto max-w-full"
         >
           {SPACES.map((space, idx) => {
             const CardContent = (
               <div
                 className="group relative snap-center w-[260px] 
-                md:w-[340px] lg:w-[210px] h-[420px] 
+                md:w-[340px] lg:w-[150px] xl:w-[210px] h-[420px] 
                 md:h-[520px] overflow-hidden rounded-[24px] border border-white 
                 shadow-[0_8px_30px_rgba(0,0,0,0.3)] transition-all duration-300 
                 hover:w-[260px] md:hover:w-[290px] lg:hover:w-[430px] cursor-pointer"
@@ -135,10 +141,11 @@ export default function HotelSpaces() {
               </div>
             )
 
-            return space.href ? (
+            const targetHref = space.href ?? space.url
+            return targetHref ? (
               <Link
                 key={space.title}
-                href={space.href}
+                href={space.url}
                 className="focus:outline-none"
                 onFocus={() => setCurrent(idx)}
                 onMouseEnter={() => setCurrent(idx)}

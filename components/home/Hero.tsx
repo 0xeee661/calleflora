@@ -49,7 +49,9 @@ export default function Hero() {
         />
         <div className="mt-10 flex flex-col items-center   justify-between gap-0">
           <h1 className="font-playfair text-foreground text-center text-[4rem] font-bold 
-          tracking-wide select-none sm:text-nowrap md:text-[6.5625rem]">
+          tracking-wide select-none sm:text-nowrap xl:text-[6.5625rem]
+        lg:text-[4rem]
+          ">
             El Hotel en Medellín 
           </h1>
 

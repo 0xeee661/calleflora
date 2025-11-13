@@ -12,15 +12,6 @@ import { ArrowDownRight } from 'lucide-react'
 // Ajustes de posición y tamaño de la flor decorativa (migrados a Tailwind)
 import { DecorFlower } from '@/components/common/DecorFlower'
 
-export const NAV_LABELS: Record<string, string> = {
-  '1': 'Signature Bath',
-  '2': 'Grand Studio',
-  '3': 'Studio',
-  '4': 'Grand',
-  '5': 'Urban',
-  '6': 'Petite',
-}
-
 type RoomCarouselProps = {
   images: string[]
 }
@@ -112,7 +103,7 @@ function RoomCarousel({ images }: RoomCarouselProps) {
           fill
           priority
           sizes="70vw, 500px "
-          className="object-cover"
+          className="object-cover "
           onClick={openLightbox}
         />
 
@@ -202,20 +193,23 @@ export default function Habitacion() {
   return (
     <main
       ref={habitacionRef}
-      className="h-[80vh] bg-[#2b2929] flex items-center justify-center"
+      className="lg:h-[80vh] h-[100vh] bg-[#2b2929] flex items-center justify-center"
       data-section="building"
     >
 
-      <div className='bg-[#201f1f] w-[80%] h-[65vh] mx-[5%] rounded-3xl
+      <div className='bg-[#201f1f] xl:w-[80%] w-[90%] lg:h-[65vh] h-[90vh] mx-[5%]rounded-3xl
       flex flex-col md:flex-row items-center justify-center gap-8 '>
 
 
         <div className="border-red-50 w-full md:w-1/2 flex flex-col 
-        items-end justify-end text-3xl relative">
+        lg:items-end lg:justify-end items-center justify-center  
+        text-base md:text-xl lg:text-2xl xl:text-3xl 
+        relative lg:text-left text-center pt-10">
           <DecorFlower
             src="/images/newResources/florA.png"
             top="-100%"
-            right="10%"
+            right="5%"
+            rightLg="-10%"
             width={800}
             height={700}
             priority={false}
@@ -226,7 +220,7 @@ export default function Habitacion() {
             <p>es una experiencia</p>
             <p>floral</p>
           </div>
-          <div className='pr-6 pt-4'>
+          <div className='lg:pr-6 pt-4'>
             <p>Conoce nuestras</p>
             <p>habitaciones</p>
             <p>y sus amenidades</p>
@@ -250,8 +244,10 @@ export default function Habitacion() {
           })()}
 
           <div className='border-red-50 w-full  mx-auto md:mx-0 text-center mt-4
-          flex gap-4 justify-end pr-[30%]'>
-            <p className='text-white text-base text-xl'>Conocer Habitaciones</p>
+          flex gap-4 justify-end 
+          xl:pr-[40%] lg:pr-[22%] pr-0 flex flex-col lg:flex-row 
+          items-center lg:items-end pt-2 lg:pt-0'>
+            <p className='text-white text-base md:text-xl'>Conocer Habitaciones</p>
             <Link
             href="/habitaciones"
             className="flex size-9 items-center justify-center rounded-full 

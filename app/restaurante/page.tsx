@@ -74,13 +74,12 @@ export default function RestaurantePage() {
           </div>
 
           <h1 className="font-playfair text-7xl font-normal md:text-8xl">
-            AMELIER
+          Restaurante Amelier
           </h1>
-          <p className="font-playfair mt-3 text-center text-xl md:text-2xl">
-            &quot;Las <i className="font-semibold">plantas</i> eran mi{' '}
-            <i className="font-semibold">primer amor</i>. <br /> En su{' '}
-            <i className="font-semibold">silencio entendí todo</i>.&quot;
-          </p>
+          <div className="font-playfair mt-3 text-center text-xl md:text-2xl">
+            <p className="font-semibold">Sabores que cuentan historias{' '} </p>
+            <p className="font-semibold">creados para disfrutar cada momento</p>.
+          </div>
 
           <PrimaryButton className="font-quicksand mt-5 !h-[38px] min-h-auto cursor-pointer !rounded-2xl border-2 border-white !px-5 py-1.5 text-xl font-bold transition-colors duration-300 hover:bg-white/10 md:hidden">
             VER HORARIOS
@@ -114,6 +113,14 @@ export default function RestaurantePage() {
             un conjunto de <i className="font-semibold">atmósferas</i> que
             florecen a su propio ritmo.
           </p>
+          <div className="mt-6">
+            <Link
+              href="/restaurante/menu"
+              className="inline-flex items-center justify-center rounded-2xl border-2 border-pink-300 px-6 py-2 font-playfair text-2xl text-white tracking-wide hover:bg-pink-300/10"
+            >
+              MENÚ
+            </Link>
+          </div>
         </div>
 
         <div className="mx-auto flex aspect-square max-w-96 justify-center max-md:order-first md:max-w-full">

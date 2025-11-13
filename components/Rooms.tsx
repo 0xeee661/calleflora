@@ -1,3 +1,4 @@
+
 'use client'
 
 import { Maybe, Room } from '@/types/graphql/graphql'
@@ -11,7 +12,6 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { applyItalicPattern } from '@/lib/utils'
 import { motion, AnimatePresence } from 'motion/react'
 import Image from 'next/image'
-import { NAV_LABELS } from './Habitacion/Habitacion'
 
 type ArrowProps = {
   className: string
@@ -43,6 +43,16 @@ function SamplePrevArrow({ className, style, onClick }: ArrowProps) {
 export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
   const [currentRoom, setCurrentRoom] = useState<Room | null>(rooms[0] || null)
   const videoRef = useRef<HTMLVideoElement | null>(null)
+  
+  // Alias visibles en el menú sin afectar el tipo real (selección sigue usando room.type)
+  const NAV_ALIAS: Record<string, string> = {
+    'XS': 'Signature Bath',
+    'S': 'Grand Studio',
+    'M' : 'Studio',
+    'J': 'Grand',
+    'U': 'Urban',
+    'P': 'Petite',
+  }
   
   // Autoplay logic for iOS Chrome
   useEffect(() => {
@@ -156,49 +166,20 @@ export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
         )}
       </AnimatePresence>
 
-      {/* Desktop vertical nav (right side) */}
-      <nav className="absolute right-8 top-1/4 z-10 hidden md:flex flex-col gap-6">
-        {Object.values(NAV_LABELS).map((label, idx) => {
-          const targetRoom = rooms.find(r => r?.type === label) || null
-          const isActive = currentRoom?.type === label
-          return (
-            <motion.button
-              key={`${label}-${idx}`}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => {
-                if (targetRoom) setCurrentRoom(targetRoom)
-              }}
-              className={`font-playfair text-3xl transition-all duration-200 text-right cursor-pointer hover:text-pink-200 ${
-                isActive ? 'text-pink-300' : 'text-white'
-              }`}
-            >
-              {label}
-            </motion.button>
-          )
-        })}
-      </nav>
-      {/* Mobile horizontal nav (center top) */}
-      <nav className="absolute top-30 right-1/2 z-10 flex translate-x-1/2 justify-center gap-4 md:hidden">
-        {Object.values(NAV_LABELS).map((label, idx) => {
-          const targetRoom = rooms.find(r => r?.type === label) || null
-          const isActive = currentRoom?.type === label
-          return (
-            <motion.button
-              key={`${label}-m-${idx}`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => {
-                if (targetRoom) setCurrentRoom(targetRoom)
-              }}
-              className={`font-quicksand text-xl transition-all duration-300 cursor-pointer hover:text-pink-200 hover:underline ${
-                isActive ? 'text-pink-300 underline' : 'text-white'
-              }`}
-            >
-              {label}
-            </motion.button>
-          )
-        })}
+      <nav className="absolute right-8 top-1/4 z-10 flex flex-col items-end gap-6">
+        {rooms.map(room => (
+          <motion.button
+            key={room?.type}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setCurrentRoom(room)}
+            className={`font-quicksand text-[2rem] transition-all duration-300 text-right ${
+              currentRoom?.type === room?.type ? 'underline' : 'hover:underline'
+            }`}
+          >
+            {NAV_ALIAS[room?.type ?? ''] ?? room?.type}
+          </motion.button>
+        ))}
       </nav>
 
       <div className="relative z-1 flex h-full flex-col gap-8 p-4 py-50 pb-20 md:justify-end md:p-16">
@@ -217,7 +198,7 @@ export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  src={"./images/newResources/florHabitacion.png"}
+                  src={currentRoom?.imageLetter?.url}
                   alt={`Flor de la habitación ${currentRoom?.type}`}
                   className="h-60 md:h-96"
                 />

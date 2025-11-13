@@ -7,12 +7,12 @@ const FLOR_VISIBLE_HEIGHT = 550
 
 const Map = () => {
   return (
-    <section className="flex items-stretch justify-center md:h-auto">
-      <div className='w-1/2 h-auto'>
-        <LocationMapHome onSaleProjects={MOCK_ON_SALE_PROJECTS} height="650px" />
-      </div>
-      <div className='w-1/2 h-full flex items-start relative'>
-        <div className='text-white text-right pl-38 mt-16 text-2xl'>
+    <section className="flex flex-col md:flex-row items-stretch justify-center md:h-auto">
+      <div className='order-1 md:order-2 w-full md:w-1/2 h-full flex items-center 
+      lg:items-start relative justify-center lg:justify-start'>
+        <div className='text-white text-center lg:text-right 
+        xl:pl-38 lg:pl-18  lg:mt-16 mt-10 mb-10 lg:mb-0 
+        text-base md:text-xl md:text-2xl'>
           <p>Si vienes a Colombia y pasas por Medellín,</p>
           <p>tu destino imperdible será {"  "}
             <span className='font-bold'>Calle Flora Hotel</span>,</p>
@@ -20,7 +20,9 @@ const Map = () => {
           <p>Te esperamos</p>
         </div>
         <div
-          className='absolute right-[10%] top-[52%] overflow-hidden pointer-events-none select-none'
+          className='hidden lg:block absolute 
+          xl:right-[10%] lg:top-[57%] lg:right-[-5%] overflow-hidden 
+          pointer-events-none select-none'
           style={{ width: 500, height: FLOR_VISIBLE_HEIGHT }}
         >
           <Image
@@ -31,6 +33,9 @@ const Map = () => {
             priority={false}
           />
         </div>
+      </div>
+      <div className='order-2 md:order-1 w-full md:w-1/2 h-auto'>
+        <LocationMapHome onSaleProjects={MOCK_ON_SALE_PROJECTS} height="650px" />
       </div>
 
     </section>

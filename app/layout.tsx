@@ -48,7 +48,7 @@ export default function RootLayout({
         className={cn(
           playfairDisplay.variable,
           quicksand.variable,
-          'antialiased',
+          'antialiased overflow-x-hidden',
         )}
       >
         <NavbarGate />
