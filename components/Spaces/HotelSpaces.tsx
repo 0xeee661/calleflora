@@ -104,7 +104,7 @@ export default function HotelSpaces() {
           className="flex snap-x snap-mandatory overflow-x-auto scrollbar-hide gap-6 px-8 justify-center items-center mx-auto max-w-full"
         >
           {SPACES.map((space, idx) => {
-            const CardContent = (
+            const CardContent = ( 
               <div
                 className="group relative snap-center w-[260px] 
                 md:w-[340px] lg:w-[150px] xl:w-[150px] h-[420px] 

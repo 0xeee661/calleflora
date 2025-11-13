@@ -20,44 +20,66 @@ async function fetchGraphQL({
 }): Promise<{
   data: Query
 }> {
-  if (!process.env.CONTENTFUL_SPACE_ID || !process.env.CONTENTFUL_ACCESS_TOKEN) {
-    console.error('Contentful environment variables are not set')
+  const spaceId = process.env.CONTENTFUL_SPACE_ID
+  const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN
+
+  if (!spaceId || !accessToken) {
+    console.error('[Contentful] Environment variables not set:', {
+      hasSpaceId: !!spaceId,
+      hasAccessToken: !!accessToken,
+    })
     return { data: {} as Query }
   }
 
   try {
-    const response = await fetch(
-      `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
-        },
-        body: JSON.stringify({ query: getGqlString(query), variables }),
-        next: next || { revalidate: 3600 },
+    const url = `https://graphql.contentful.com/content/v1/spaces/${spaceId}`
+    const body = JSON.stringify({ 
+      query: getGqlString(query), 
+      variables: variables || {} 
+    })
+
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
       },
-    )
+      body,
+      next: next || { revalidate: 3600 },
+    })
     
     if (!response.ok) {
-      console.error(`GraphQL request failed: ${response.status} ${response.statusText}`)
+      const errorText = await response.text().catch(() => 'Unable to read error')
+      console.error('[Contentful] GraphQL request failed:', {
+        status: response.status,
+        statusText: response.statusText,
+        error: errorText.substring(0, 200),
+      })
       return { data: {} as Query }
     }
-    // Parse JSON defensively to avoid runtime errors when body is empty/invalid
+
+    // Parse JSON defensively
     try {
       const json = await response.json()
+      
+      // Check for GraphQL errors
+      if (json.errors && Array.isArray(json.errors)) {
+        console.error('[Contentful] GraphQL errors:', json.errors)
+      }
+      
       // Ensure structure is as expected
       if (!json || typeof json !== 'object' || !('data' in json)) {
-        console.error('GraphQL JSON shape unexpected or empty')
+        console.error('[Contentful] Invalid response shape:', json)
         return { data: {} as Query }
       }
+      
       return json as { data: Query }
     } catch (parseError) {
-      console.error('Failed to parse GraphQL JSON response:', parseError)
+      console.error('[Contentful] Failed to parse JSON:', parseError)
       return { data: {} as Query }
     }
   } catch (error) {
-    console.error('Error fetching from Contentful:', error)
+    console.error('[Contentful] Fetch error:', error instanceof Error ? error.message : error)
     return { data: {} as Query }
   }
 }
