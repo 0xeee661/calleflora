@@ -16,6 +16,7 @@ const playfairDisplay = Playfair_Display({
   style: ['normal', 'italic'],
 })
 
+
 const quicksand = Quicksand({
   variable: '--font-quicksand',
   subsets: ['latin'],

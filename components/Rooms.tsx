@@ -12,6 +12,7 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { applyItalicPattern } from '@/lib/utils'
 import { motion, AnimatePresence } from 'motion/react'
 import Image from 'next/image'
+import NavDrawer from '@/components/Navbar/NavDrawer/NavDrawer'
 
 type ArrowProps = {
   className: string
@@ -126,7 +127,7 @@ export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
   const settings: Settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
     nextArrow: <SampleNextArrow className="" style={{}} onClick={() => {}} />,
     prevArrow: <SamplePrevArrow className="" style={{}} onClick={() => {}} />,
@@ -134,7 +135,7 @@ export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
@@ -152,7 +153,11 @@ export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
   }
 
   return (
-    <section className="relative min-h-screen snap-start">
+    <section className="relative min-h-screen snap-start pt-16">
+      {/* Menú flotante de 3 puntos para habitaciones */}
+      <div className="absolute left-4 top-4 z-[50]">
+        <NavDrawer />
+      </div>
       <AnimatePresence mode="wait">
         {currentRoom && (
           <motion.video

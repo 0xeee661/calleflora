@@ -52,12 +52,12 @@ export default function Hero() {
           tracking-wide select-none sm:text-nowrap xl:text-[6.5625rem]
         lg:text-[4rem]
           ">
-            El Hotel en Medellín 
+            UN HO<span className="font-semibold italic">TEL</span>
           </h1>
 
           <div className="font-playfair text-foreground max-w-2xl text-center tracking-wide select-none">
             <span className="block text-2xl leading-snug font-light text-white/90 sm:text-2xl md:text-[2rem]">
-            Inspirado en las flores<br className="md:hidden" />
+            En Medellín, inspirado en las flores<br className="md:hidden" />
               {/*<i className="font-black">flores</i>.*/}
             </span>
 

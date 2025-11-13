@@ -26,7 +26,7 @@ export default async function Home() {
 
       <Map />
 
-      <Rooftop />
+      {/* <Rooftop /> */}
 
       <FloatingMenu hideOnBuilding={true} />
     </>

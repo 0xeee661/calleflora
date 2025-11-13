@@ -160,23 +160,28 @@ export default function GoogleMap({
             }
             className="flex flex-col w-[280px] bg-white rounded-2xl shadow-lg overflow-hidden"
           >
-            {/* Imagen del proyecto */}
+            {/* Imagen del proyecto / hotel */}
             <div className="h-[160px] w-full overflow-hidden">
-              {selectedProject?.mainImage?.url && (
-                <Image
-                  src={selectedProject?.mainImage?.url}
-                  alt={selectedProject?.name || ''}
-                  className="h-full w-full object-cover"
-                  width={280}
-                  height={160}
-                />
-              )}
+              {(() => {
+                const fallbackHotelImage = '/images/building/building.png'
+                const imageUrl =
+                  selectedProject?.mainImage?.url || fallbackHotelImage
+                return (
+                  <Image
+                    src={imageUrl}
+                    alt={selectedProject?.name || 'Calle Flora Hotel'}
+                    className="h-full w-full object-cover"
+                    width={280}
+                    height={160}
+                  />
+                )
+              })()}
             </div>
 
             {/* Contenido de la tarjeta */}
             <div className="p-4 flex flex-col gap-3">
-              {/* Nombre del proyecto en rojo */}
-              <h1 className="text-[#E63946] font-bold text-2xl leading-tight">
+              {/* Nombre del proyecto en negro */}
+              <h1 className="text-black font-bold text-2xl leading-tight">
                 {selectedProject?.name}
               </h1>
 
@@ -237,6 +242,10 @@ const MarkerWithInfoWindow = ({
     onClickFN(project)
     map?.panTo(position)
     map?.setZoom(17)
+
+    // Desplazar ligeramente el mapa para que el InfoWindow se vea completo
+    // Valor en píxeles: ajustar este offset si quieres subir/bajar más el pin
+
     closeInfoWindow()
 
     setTimeout(() => {
@@ -263,11 +272,11 @@ const MarkerWithInfoWindow = ({
       title={project.name || 'Proyecto'}
     >
       <Image
-        src="/svgs/pin-marker.svg"
-        alt="pin-marker"
-        width={32}
-        height={32}
-        className="size-8"
+        src="/images/newResources/florA.png"  
+        alt="Calle Flora"
+        width={120}
+        height={120}
+        className="h-16 w-16 -translate-y-1 object-contain transition-transform duration-200 hover:scale-110 hover:drop-shadow-lg"
       />
     </AdvancedMarker>
   )

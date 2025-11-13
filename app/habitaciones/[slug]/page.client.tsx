@@ -9,6 +9,7 @@ import 'photoswipe/dist/photoswipe.css'
 import { applyItalicPattern } from '@/lib/utils'
 import { PrimaryButton } from '@/components/Button/PrimaryButton'
 import { GoArrowDownRight } from 'react-icons/go'
+import NavDrawer from '@/components/Navbar/NavDrawer/NavDrawer'
 
 export const RoomPage = ({ room }: { room: Maybe<Room> }) => {
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -34,6 +35,10 @@ export const RoomPage = ({ room }: { room: Maybe<Room> }) => {
   return (
     <main>
       <section className="relative h-screen snap-start">
+        {/* Menú flotante de 3 puntos para la página de detalle de habitación */}
+        <div className="absolute left-4 top-4 z-[50]">
+          <NavDrawer />
+        </div>
         {room?.background?.url && (
           <>
             <video

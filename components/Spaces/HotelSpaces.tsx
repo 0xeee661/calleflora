@@ -7,43 +7,81 @@ import Link from 'next/link'
 
 type SpaceCard = {
   title: string
-  subtitle?: string
+  description: string[]
   href?: string
   url: string
   img: string
 }
 
-// Editable card border width (in pixels)
+// ========================================
+// CONFIGURACIÓN EDITABLE
+// ========================================
+
+// Grosor del borde de las tarjetas (en píxeles)
 const CARD_BORDER_WIDTH_PX = 2
 
+// Tamaño de texto cuando la imagen NO está expandida
+const TEXT_SIZE_COLLAPSED = {
+  title: 'text-2xl md:text-3xl',       // Tamaño del título colapsado
+  description: 'text-xs md:text-sm',   // Tamaño de la descripción colapsada
+}
+
+// Tamaño de texto cuando la imagen ESTÁ expandida (hover)
+const TEXT_SIZE_EXPANDED = {
+  title: 'text-4xl md:text-5xl',       // Tamaño del título expandido
+  description: 'text-base md:text-lg', // Tamaño de la descripción expandida
+}
+
+// Contenido de cada espacio (EDITABLE)
 const SPACES: SpaceCard[] = [
   {
     title: 'Restaurante',
+    description: [
+      'Amelier Lounge',
+      'Cocina con Alma | Coctelería',
+      'Consciente | Café de Especialidad',
+    ],
     href: '/restaurante',
     img: '/images/espacios/restaurante.png',
     url: '/restaurante',
   },
   {
     title: 'Rooftop',
-    subtitle: 'Próximamente',
+    description: [
+      'Próximamente',
+      'Vista panorámica',
+      'Bar & Lounge',
+    ],
     img: '/images/rooftop.png',
     url: '/rooftop',
   },
   {
     title: 'Piscina',
-    subtitle: 'Próximamente',
+    description: [
+      'Próximamente',
+      'Área de relajación',
+      'Servicio de toallas',
+    ],
     img: '/images/espacios/piscina.png',
     url: '/',
   },
   {
     title: 'Gimnasio',
-    subtitle: 'Próximamente',
+    description: [
+      'Próximamente',
+      'Equipamiento moderno',
+      '24/7 disponible',
+    ],
     img: '/images/espacios/gimnasio.png',
     url: '/',
   },
   {
     title: 'Spa',
-    subtitle: 'Próximamente',
+    description: [
+      'Próximamente',
+      'Tratamientos exclusivos',
+      'Zona de bienestar',
+    ],
     img: '/images/espacios/amelier.png',
     url: '/',
   },
@@ -51,7 +89,8 @@ const SPACES: SpaceCard[] = [
 
 export default function HotelSpaces() {
   const sliderRef = useRef<HTMLDivElement>(null)
-  const [current, setCurrent] = useState(0)
+  const [current, setCurrent] = useState(0) // Primera imagen (índice 0) abierta por defecto
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(0) // Primer elemento expandido por defecto
 
   useEffect(() => {
     const slider = sliderRef.current
@@ -104,14 +143,18 @@ export default function HotelSpaces() {
           className="flex snap-x snap-mandatory overflow-x-auto scrollbar-hide gap-6 px-8 justify-center items-center mx-auto max-w-full"
         >
           {SPACES.map((space, idx) => {
+            const isExpanded = hoveredIndex === idx
             const CardContent = ( 
               <div
-                className="group relative snap-center w-[260px] 
-                md:w-[340px] lg:w-[150px] xl:w-[150px] h-[420px] 
+                className={`group relative snap-center h-[420px] 
                 md:h-[520px] overflow-hidden rounded-[24px] border border-white 
-                shadow-[0_8px_30px_rgba(0,0,0,0.3)] transition-all duration-300 
-                hover:w-[260px] md:hover:w-[290px] lg:hover:w-[430px] cursor-pointer"
+                shadow-[0_8px_30px_rgba(0,0,0,0.3)] transition-all duration-300 cursor-pointer
+                ${isExpanded 
+                  ? 'w-[260px] md:w-[290px] lg:w-[430px]' 
+                  : 'w-[260px] md:w-[340px] lg:w-[120px] xl:w-[150px]'
+                }`}
                 style={{ borderWidth: CARD_BORDER_WIDTH_PX }}
+                onMouseEnter={() => setHoveredIndex(idx)}
               >
                 <Image
                   src={space.img}
@@ -123,19 +166,27 @@ export default function HotelSpaces() {
                 />
 
                 {/* Top-right action */}
-                <div className="absolute right-3 top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                <div className={`absolute right-3 top-3 transition-opacity duration-200 ${isExpanded ? 'opacity-100' : 'opacity-0'}`}>
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/80 text-black">
                     <ArrowUpRight className="h-4 w-4" />
                   </div>
                 </div>
 
-                {/* Bottom overlay */}
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6">
-                  <div className="font-playfair text-3xl md:text-4xl text-white">
+                {/* Bottom overlay con texto siempre visible */}
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-6 pb-8">
+                  <h3 className={`font-playfair font-bold text-white mb-3 transition-all duration-300 ${
+                    isExpanded ? TEXT_SIZE_EXPANDED.title : TEXT_SIZE_COLLAPSED.title
+                  }`}>
                     {space.title}
-                  </div>
-                  <div className="text-white/80 text-sm">
-                    {space.subtitle ?? (space.href ? 'Abrir' : '')}
+                  </h3>
+                  <div className={`font-quicksand text-white/90 space-y-1 transition-all duration-300 ${
+                    isExpanded ? TEXT_SIZE_EXPANDED.description : TEXT_SIZE_COLLAPSED.description
+                  }`}>
+                    {space.description.map((line, i) => (
+                      <p key={i} className={`leading-snug ${i === 0 ? 'font-bold' : ''}`}>
+                        {line}
+                      </p>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -148,14 +199,12 @@ export default function HotelSpaces() {
                 href={space.url}
                 className="focus:outline-none"
                 onFocus={() => setCurrent(idx)}
-                onMouseEnter={() => setCurrent(idx)}
               >
                 {CardContent}
               </Link>
             ) : (
               <div
                 key={space.title}
-                onMouseEnter={() => setCurrent(idx)}
                 className="focus:outline-none"
               >
                 {CardContent}

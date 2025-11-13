@@ -197,38 +197,47 @@ export default function Habitacion() {
       data-section="building"
     >
 
-      <div className='bg-[#201f1f] xl:w-[80%] w-[90%] lg:h-[65vh] h-[90vh] mx-[5%]rounded-3xl
-      flex flex-col md:flex-row items-center justify-center gap-8 '>
+      <div className='bg-[#201f1f] xl:w-[80%] w-[90%] lg:h-[65vh] h-[90vh] mx-[5%] rounded-3xl
+      flex flex-col md:flex-row items-center justify-center gap-8 relative'>
 
+        {/* Capa de opacidad sobre toda la sección */}
+        <div className="absolute inset-0 bg-black pointer-events-none z-[1]" style={{ opacity: 0.3 }} />
 
-        <div className="border-red-50 w-full md:w-1/2 flex flex-col 
-        lg:items-end lg:justify-end items-center justify-center  
-        text-base md:text-xl lg:text-2xl xl:text-3xl 
-        relative lg:text-left text-center pt-10">
+        <div className=" w-full md:w-1/2 flex flex-col 
+        items-start justify-center  
+        relative text-left z-[1] ">
           <DecorFlower
             src="/images/newResources/florA.png"
-            top="-100%"
-            right="5%"
+            top="-175%"
+            right="10%"
             rightLg="-10%"
             width={800}
             height={700}
+            overlayOpacity={0}
             priority={false}
+            className="z-[10]"
           />
 
-          <div className='font-bold'>
+          <div className='flex flex-col items-end justify-center w-full'>
+          <div className='font-playfair font-normal
+          text-[24px]  md:text-[26px] lg:text-[32px] xl:text-[36px] leading-[100%] 
+          -mt-20 lg:-mt-20'>
             <p>Cada habitación</p>
             <p>es una experiencia</p>
             <p>floral</p>
           </div>
-          <div className='lg:pr-6 pt-4'>
+          <div className='font-playfair
+          text-[24px] md:text-[26px] lg:text-[32px] xl:text-[36px] lg:pr-4 font-normal
+          pt-4 -mt-16 lg:-mt-2 font-thin leading-[100%]'>
             <p>Conoce nuestras</p>
             <p>habitaciones</p>
             <p>y sus amenidades</p>
           </div>
+          </div>
 
         </div>
 
-        <div className="border-red-50 w-full md:w-1/2">
+        <div className="border-red-50 w-full md:w-1/2 z-[2]">
 
           {/* Carousel con zoom */}
           {(() => {
@@ -247,7 +256,8 @@ export default function Habitacion() {
           flex gap-4 justify-end 
           xl:pr-[40%] lg:pr-[22%] pr-0 flex flex-col lg:flex-row 
           items-center lg:items-end pt-2 lg:pt-0'>
-            <p className='text-white text-base md:text-xl'>Conocer Habitaciones</p>
+            <p className='text-white font-quicksand text-[24px] leading-[100%]'>
+              Conocer Habitaciones</p>
             <Link
             href="/habitaciones"
             className="flex size-9 items-center justify-center rounded-full 

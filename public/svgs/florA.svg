@@ -1,0 +1,21 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="80"
+  height="120"
+  viewBox="0 0 768 1365"
+  fill="none"
+>
+  <!--
+    SVG contenedor que referencia la ilustración original florA.png.
+    La imagen PNG debe tener fondo transparente para que el pin
+    se vea sin fondo en el mapa.
+  -->
+  <image
+    href="/images/newResources/florA.png"
+    width="768"
+    height="1365"
+    preserveAspectRatio="xMidYMax meet"
+  />
+</svg>
+
+

@@ -53,7 +53,7 @@ export default function NavDrawer() {
               {navigationLinks.map(link => (
                 <Link
                   key={link.label}
-                  className="font-quicksand text-[34px] leading-none text-[#FFF4B1] transition hover:opacity-90"
+                  className="font-quicksand text-[34px] leading-none text-white transition-colors duration-200 hover:text-pink-300"
                   href={link.href}
                   onClick={() => setDrawerOpen(false)}
                 >
