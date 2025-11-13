@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -21,9 +21,14 @@ export default function ExperienciasCarousel() {
     )
   }
 
-  const goTo = (idx: number) => setCurrent((idx + total) % total)
-  const prev = () => goTo(current - 1)
-  const next = () => goTo(current + 1)
+  const prev = useCallback(
+    () => setCurrent(c => (c - 1 + total) % total),
+    [total],
+  )
+  const next = useCallback(
+    () => setCurrent(c => (c + 1) % total),
+    [total],
+  )
 
   // Keyboard navigation
   React.useEffect(() => {

@@ -15,7 +15,7 @@ type Props = {
 
 export default function LocationMapHome({ onSaleProjects, height }: Props) {
   const [selectedKey, setSelectedKey] = useState<string | null>(null)
-  const mapHeight = '650px'
+  const mapHeight = height ?? '650px'
   
   // 🎯 Mock del Carousel API (opcional, puede ser undefined)
   const api: CarouselApi = undefined

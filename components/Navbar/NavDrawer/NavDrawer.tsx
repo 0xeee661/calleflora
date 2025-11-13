@@ -2,12 +2,10 @@
 
 import { useState } from 'react'
 import { EllipsisVertical, X } from 'lucide-react'
-import Link from 'next/link'
 import styles from './NavDrawer.module.css'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
 import { whatsappLink } from '@/constants/app'
-import { navigationLinks } from '@/constants/navigation'
 
 export default function NavDrawer() {
   const [drawerOpen, setDrawerOpen] = useState(false)

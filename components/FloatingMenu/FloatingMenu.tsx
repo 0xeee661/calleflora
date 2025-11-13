@@ -1,8 +1,6 @@
 'use client'
 
-import Link from 'next/link'
 import { motion } from 'motion/react'
-import { navigationLinks } from '@/constants/navigation'
 import { useEffect, useState } from 'react'
 
 interface FloatingMenuProps {

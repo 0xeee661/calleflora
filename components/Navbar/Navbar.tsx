@@ -5,7 +5,6 @@ import logo from '@/public/images/logo.png'
 import { navigationLinks } from '@/constants/navigation'
 import { bookingLink } from '@/constants/app'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
 import { MdOutlineLocationOn } from 'react-icons/md'
 
 const hotelAddress = "https://www.google.com/maps/place/Calle+Flora+Hotel+by+Jalo/data=!4m2!3m1!1s0x0:0xdf15f8069e711c39?sa=X&ved=1t:2428&ictx=111"

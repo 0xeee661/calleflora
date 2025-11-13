@@ -1,6 +1,4 @@
 import Image from 'next/image'
-import temporal_map from '@/public/images/temporal_map.png'
-import temporal_map_mobile from '@/public/images/temporal_map_mobile.png'
 import florB from '@/public/images/newResources/florB.png'
 import LocationMapHome from '../GoogleMaps/LocationMap'
 import { MOCK_ON_SALE_PROJECTS } from '@/mocks/onSaleProjectsMock'

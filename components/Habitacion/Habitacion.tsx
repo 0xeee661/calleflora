@@ -11,7 +11,6 @@ import { ArrowDownRight } from 'lucide-react'
 
 // Ajustes de posición y tamaño de la flor decorativa (migrados a Tailwind)
 import { DecorFlower } from '@/components/common/DecorFlower'
-import { constants } from 'node:buffer'
 
 export const NAV_LABELS: Record<string, string> = {
   '1': 'Signature Bath',
@@ -188,10 +187,7 @@ export default function Habitacion() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const habitacionRef = useRef<HTMLElement>(null)
 
-  const handleFlowerClick = (flower: (typeof flowers)[0]) => {
-    setSelectedFlower(flower)
-    setIsModalOpen(true)
-  }
+  // Removed unused handleFlowerClick to satisfy linter
 
   const handleCloseModal = () => {
     setIsModalOpen(false)
