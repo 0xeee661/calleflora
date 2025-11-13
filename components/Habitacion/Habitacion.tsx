@@ -198,10 +198,9 @@ export default function Habitacion() {
     >
 
       <div className='bg-[#201f1f] xl:w-[80%] w-[90%] lg:h-[65vh] h-[90vh] mx-[5%] rounded-3xl
-      flex flex-col md:flex-row items-center justify-center gap-8 relative'>
+      flex flex-col md:flex-row items-center justify-center gap-8 relative round-'>
 
         {/* Capa de opacidad sobre toda la sección */}
-        <div className="absolute inset-0 bg-black pointer-events-none z-[1]" style={{ opacity: 0.3 }} />
 
         <div className=" w-full md:w-1/2 flex flex-col 
         items-start justify-center  

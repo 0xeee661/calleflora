@@ -110,10 +110,21 @@ export default function HotelSpaces() {
 
   return (
     <main
-      className="h-auto pb-[10%] bg-[#2b2929] flex items-center justify-center overflow-x-hidden"
+      className="relative h-auto pb-[10%]  flex items-center justify-center overflow-x-hidden"
       data-section="HotelSpaces"
     >
-      <div className="relative w-full px-6 max-w-7xl mx-auto flex flex-col items-center">
+      {/* Fondo de imagen del hotel con opacidad */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <Image
+          src="/images/building/building-bg.png"
+          alt="Calle Flora Hotel"
+          fill
+          priority={false}
+          className="h-full w-full object-cover opacity-40"
+        />
+      </div>
+
+      <div className="relative w-full px-6 max-w-7xl mx-auto flex flex-col items-center pt-24">
         {/* Controls */}
         <button
           type="button"
