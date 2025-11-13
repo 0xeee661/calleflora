@@ -4,8 +4,8 @@
  * @version 1.0.0
  */
 
-import { Maybe, OnSaleProject } from '@/types/graphql/graphql'
-
+import { Maybe } from '@/types/graphql/graphql'
+import { OnSaleProject } from '@/types/graphql/graphqlExtra'
 /**
  * ✅ SOLID Principle: Single Responsibility
  * Este archivo solo contiene datos mock, separado de la lógica de negocio
@@ -15,9 +15,9 @@ export const MOCK_ON_SALE_PROJECTS: Maybe<OnSaleProject>[] = [
   {
     __typename: 'OnSaleProject',
     _id: 'project-1',
-    name: 'houzez',
-    slug: 'houzez',
-    description: 'venta de proyecto residencial en medellin',
+    name: 'Calle flora',
+    slug: 'calle-flora',
+    description: 'Hotel en homenaje a las flores de Medellín',
     city: {
       __typename: 'City',
       _id: 'city-medellin',
@@ -37,19 +37,20 @@ export const MOCK_ON_SALE_PROJECTS: Maybe<OnSaleProject>[] = [
     },
     location: {
       __typename: 'Location',
-      lat: 6.137895,
-      lon: -75.530688,
+      lat: 6.209140153239753,
+      lon: -75.56729253068396,
     },
+
     pricesCollection: {
       __typename: 'OnSaleProjectPricesCollection',
       items: [
         {
           __typename: 'OnSaleProjectPrice',
           _id: 'price-1',
-          type: 'Apartamento',
-          price: 2700000000,
+          type: '',
+          price: 0,
           priceFrom: true,
-          description: 'Desde',
+          description: 'Hotel en homenaje a las flores de Medellín',
           sys: {
             id: 'price-1',
             publishedAt: '2024-01-01T00:00:00.000Z',
