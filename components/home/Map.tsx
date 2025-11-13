@@ -9,7 +9,7 @@ const Map = () => {
   return (
     <section className="flex items-stretch justify-center md:h-auto">
       <div className='w-1/2 h-auto'>
-        <LocationMapHome onSaleProjects={MOCK_ON_SALE_PROJECTS} height="360px" />
+        <LocationMapHome onSaleProjects={MOCK_ON_SALE_PROJECTS} height="650px" />
       </div>
       <div className='w-1/2 h-full flex items-start relative'>
         <div className='text-white text-right pl-38 mt-16 text-2xl'>
