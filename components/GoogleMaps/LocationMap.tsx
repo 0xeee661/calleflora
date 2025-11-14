@@ -65,7 +65,7 @@ export default function LocationMapHome({ onSaleProjects, height }: Props) {
 
   return (
     <section className="relative snap-start" id="location">
-      <APIProvider apiKey={"AIzaSyDAgJ2G7tHzlOG1-fNOaqgRTkv2T_7xgek"}>
+      <APIProvider apiKey={"AIzaSyC7Dk1PUBFC3z_xCZ4On4WmM8uUOWSRZno"}>
         <div className="relative w-full max-md:order-first" style={{ height: mapHeight }}>
           <GoogleMap
             data={onSaleProjects}
