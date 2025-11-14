@@ -21,9 +21,11 @@ type SpaceCard = {
 const CARD_BORDER_WIDTH_PX = 2
 
 // Tamaño de texto cuando la imagen NO está expandida
+// En mobile todas las tarjetas usan el mismo tamaño que la expandida;
+// la diferencia de tamaños sólo aplica en breakpoints mayores.
 const TEXT_SIZE_COLLAPSED = {
-  title: 'text-2xl md:text-3xl',       // Tamaño del título colapsado
-  description: 'text-xs md:text-sm',   // Tamaño de la descripción colapsada
+  title: 'text-4xl md:text-3xl',       // Tamaño del título colapsado (igual que expandido en mobile)
+  description: 'text-base md:text-sm', // Tamaño de la descripción colapsada (igual que expandida en mobile)
 }
 
 // Tamaño de texto cuando la imagen ESTÁ expandida (hover)
@@ -163,7 +165,7 @@ export default function HotelSpaces() {
                 lg:h-[520px] overflow-hidden rounded-[24px] border border-white 
                 shadow-[0_8px_30px_rgba(0,0,0,0.3)] transition-all duration-300 cursor-pointer
                 ${isExpanded 
-                  ? 'w-[90vw] max-w-[540px] lg:w-[430px]' 
+                  ? 'w-[90vw] max-w-[540px] lg:w-[330px] xl:w-[430px]' 
                   : 'w-[90vw] max-w-[540px] lg:w-[120px] xl:w-[150px]'
                 }`}
                 style={{ borderWidth: CARD_BORDER_WIDTH_PX }}

@@ -12,6 +12,8 @@ type DecorFlowerProps = {
   rightLg?: string | number
   width: number
   height: number
+  widthLg?: number
+  heightLg?: number
   className?: string
   flipX?: boolean
   priority?: boolean
@@ -30,6 +32,8 @@ export function DecorFlower({
   rightLg = '20%',
   width,
   height,
+  widthLg,
+  heightLg,
   className,
   flipX = false,
   priority = false,
@@ -44,15 +48,23 @@ export function DecorFlower({
     ['--df-right-base']?: string | number
     ['--df-top-lg']?: string | number
     ['--df-right-lg']?: string | number
+    ['--df-width-base']?: string
+    ['--df-height-base']?: string
+    ['--df-width-lg']?: string
+    ['--df-height-lg']?: string
   } = {
     top: 'var(--df-top-final)',
     right: 'var(--df-right-final)',
-    width: width,
-    height: containerHeight,
+    width: 'var(--df-width-final)',
+    height: 'var(--df-height-final)',
     ['--df-top-base']: top,
     ['--df-right-base']: right,
-    ['--df-top-lg']: topLg,
-    ['--df-right-lg']: rightLg,
+    ['--df-width-base']: `${width}px`,
+    ['--df-height-base']: `${containerHeight}px`,
+    ...(topLg !== undefined && { ['--df-top-lg']: topLg }),
+    ...(rightLg !== undefined && { ['--df-right-lg']: rightLg }),
+    ...(widthLg !== undefined && { ['--df-width-lg']: `${widthLg}px` }),
+    ...(heightLg !== undefined && { ['--df-height-lg']: `${heightLg}px` }),
   }
   
   return (
@@ -70,7 +82,7 @@ export function DecorFlower({
         width={width}
         height={height}
         className={cn('object-contain', flipX && 'scale-x-[-1]')}
-        style={{ width, height }}
+        style={{ width: '100%', height: '100%' }}
         priority={priority}
       />
       
@@ -86,12 +98,16 @@ export function DecorFlower({
         .df-pos {
           --df-top-final: var(--df-top-base);
           --df-right-final: var(--df-right-base);
+          --df-width-final: var(--df-width-base);
+          --df-height-final: var(--df-height-base);
         }
         /* Solo entre 1024px y 1279px usa los valores *Lg */
         @media (min-width: 1024px) and (max-width: 1279px) {
           .df-pos {
             --df-top-final: var(--df-top-lg, var(--df-top-base));
             --df-right-final: var(--df-right-lg, var(--df-right-base));
+            --df-width-final: var(--df-width-lg, var(--df-width-base));
+            --df-height-final: var(--df-height-lg, var(--df-height-base));
           }
         }
         /* A partir de 1280px vuelve a los valores base */
@@ -99,6 +115,8 @@ export function DecorFlower({
           .df-pos {
             --df-top-final: var(--df-top-base);
             --df-right-final: var(--df-right-base);
+            --df-width-final: var(--df-width-base);
+            --df-height-final: var(--df-height-base);
           }
         }
       `}</style>

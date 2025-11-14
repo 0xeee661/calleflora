@@ -44,7 +44,7 @@ export default function Navbar() {
         </Link>
 
         <div className="flex justify-end">
-          <nav className="hidden items-center justify-center gap-10 md:flex pr-6">
+          <nav className="hidden items-center justify-center xl:gap-10 gap-6 md:flex pr-6 pl-4 xl:pl-0">
             {navigationLinks.map(link => {
               const isActive =
                 link.href === '/'
@@ -55,7 +55,7 @@ export default function Navbar() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className={`text-lg transition hover:text-pink-300 ${
+                className={`text-base lg:text-lg transition hover:text-pink-300 ${
                     isActive ? 'text-pink-300' : 'text-white'
                   }`}
                 >
@@ -69,7 +69,7 @@ export default function Navbar() {
             href={bookingLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full border border-white px-6 font-playfair text-lg font-semibold text-white transition hover:border-pink-300 hover:text-pink-300 hover:bg-white/10"
+            className="rounded-full border border-white px-5 lg:px-6 font-playfair text-sm lg:text-base font-semibold text-white transition hover:border-pink-300 hover:text-pink-300 hover:bg-white/10"
           >
             RESERVAR
           </a>

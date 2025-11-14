@@ -20,7 +20,8 @@ const Map = () => {
       lg:items-start relative justify-center lg:justify-start'>
         <div
           className='text-white lg:text-right text-center font-playfair font-normal leading-normal
-        xl:pl-38 lg:pl-18 lg:mt-16 mt-10 mb-10 lg:mb-0 lg:text-[24px] sm:text-[18px] md:text-[20px] text-[16px]'
+        xl:pl-38 lg:pl-18 lg:mt-16 mt-10 mb-10 lg:mb-0 xl:text-[24px] 
+        lg:text-[20px] sm:text-[18px] md:text-[20px] text-[16px]'
         >
           <p>Si vienes a Colombia y pasas por Medellín,</p>
           <p>tu destino imperdible será {"  "}

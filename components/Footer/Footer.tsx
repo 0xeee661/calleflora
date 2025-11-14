@@ -26,7 +26,8 @@ export const navigationLinks = [
 
 export const Footer = () => {
   return (
-    <footer className="flex snap-start items-center justify-center px-8 py-15 lg:h-[50vh] h-[80vh]">
+    <footer className="flex snap-start items-center justify-center px-8 py-15 xl:h-[50vh] 
+     lg:h-[55vh] h-[80vh]">
       <div className="w-full max-w-[1075px] pb-10 lg:pb-0">
         {/* Menú superior del footer */}
         <nav className="mb-10">

@@ -208,8 +208,9 @@ export default function Habitacion() {
           <DecorFlower
             src="/images/newResources/florA.png"
             top="-80%"
+            topLg="-200%"
             right="10%"
-            rightLg="3%"
+            rightLg="1%"
             width={800}
             height={700}
             overlayOpacity={0}
@@ -219,10 +220,10 @@ export default function Habitacion() {
 
           <div className='flex flex-col lg:items-end items-center justify-center w-full
           text-center lg:text-left pt-28 text-[20px] sm:text-[24px]
-          md:text-[26px] lg:text-[32px] xl:text-[36px]'>
+          md:text-[26px] lg:text-[30px] xl:text-[36px]'>
             <div className='font-playfair font-semibold
            leading-[100%] 
-          -mt-20 lg:-mt-20 '>
+          -mt-20 xl:-mt-20 lg:-mt-42 '>
               <p>Cada habitación</p>
               <p>es una experiencia</p>
               <p>floral</p>
@@ -254,8 +255,8 @@ export default function Habitacion() {
 
           <div className='border-red-50 w-full  mx-auto md:mx-0 text-center mt-4
           flex gap-4 justify-end 
-          xl:pr-[20%] lg:pr-[22%] pr-0 flex flex-col lg:flex-row 
-          items-center lg:items-end pt-2 lg:pt-0'>
+          xl:pr-[20%] lg:pr-[22%] md:pr-[32%] pr-0 flex flex-col md:flex-row 
+          items-center lg:items-end pt-2 lg:pt-0  md:pb-8'>
             <p className='text-white font-quicksand lg:text-[24px] text-[16px] leading-[100%]'>
               Conocer Habitaciones</p>
             <Link
