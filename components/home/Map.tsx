@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import florB from '@/public/images/newResources/florB.png'
-import mapImage from '@/public/images/map.png'
 import LocationMapHome from '../GoogleMaps/LocationMap'
 import { MOCK_ON_SALE_PROJECTS } from '@/mocks/onSaleProjectsMock'
 
