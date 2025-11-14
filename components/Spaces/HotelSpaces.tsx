@@ -124,13 +124,13 @@ export default function HotelSpaces() {
         />
       </div>
 
-      <div className="relative w-full px-6 max-w-7xl mx-auto flex flex-col items-center pt-24">
-        {/* Controls */}
+      <div className="relative w-full px-4 md:px-6 max-w-7xl mx-auto flex flex-col items-center pt-16 md:pt-24">
+        {/* Controles solo en desktop (cuando el layout es horizontal) */}
         <button
           type="button"
           aria-label="Anterior"
           onClick={prev}
-          className="absolute left-2 top-1/2 -translate-y-1/2 z-10 flex 
+          className="hidden lg:flex absolute left-2 top-1/2 -translate-y-1/2 z-10 
           h-9 w-9 items-center justify-center rounded-full bg-white/20 
           text-white backdrop-blur hover:bg-white/30 cursor-pointer"
         >
@@ -141,28 +141,30 @@ export default function HotelSpaces() {
           type="button"
           aria-label="Siguiente"
           onClick={next}
-          className="absolute right-2 top-1/2 
-          -translate-y-1/2 z-10 flex h-9 w-9 items-center justify-center 
+          className="hidden lg:flex absolute right-2 top-1/2 
+          -translate-y-1/2 z-10 h-9 w-9 items-center justify-center 
           rounded-full bg-white/20 text-white backdrop-blur hover:bg-white/30 cursor-pointer"
         >
           <ArrowRight className="h-5 w-5" />
         </button>
 
-        {/* Slider */}
+        {/* Slider: vertical en mobile / tablet, horizontal sólo en desktop */}
         <div
           ref={sliderRef}
-          className="flex snap-x snap-mandatory overflow-x-auto scrollbar-hide gap-6 px-8 justify-center items-center mx-auto max-w-full"
+          className="flex flex-col lg:flex-row lg:snap-x lg:snap-mandatory 
+          overflow-visible lg:overflow-x-auto scrollbar-hide gap-6 px-2 md:px-8 
+          items-stretch mx-auto max-w-full"
         >
           {SPACES.map((space, idx) => {
             const isExpanded = hoveredIndex === idx
             const CardContent = ( 
               <div
-                className={`group relative snap-center h-[420px] 
-                md:h-[520px] overflow-hidden rounded-[24px] border border-white 
+                className={`group relative lg:snap-center h-[360px] 
+                lg:h-[520px] overflow-hidden rounded-[24px] border border-white 
                 shadow-[0_8px_30px_rgba(0,0,0,0.3)] transition-all duration-300 cursor-pointer
                 ${isExpanded 
-                  ? 'w-[260px] md:w-[290px] lg:w-[430px]' 
-                  : 'w-[260px] md:w-[340px] lg:w-[120px] xl:w-[150px]'
+                  ? 'w-[90vw] max-w-[540px] lg:w-[430px]' 
+                  : 'w-[90vw] max-w-[540px] lg:w-[120px] xl:w-[150px]'
                 }`}
                 style={{ borderWidth: CARD_BORDER_WIDTH_PX }}
                 onMouseEnter={() => setHoveredIndex(idx)}

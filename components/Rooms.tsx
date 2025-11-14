@@ -216,7 +216,7 @@ export const Rooms = ({ rooms }: { rooms: Maybe<Room>[] }) => {
                   transition={{ duration: 0.6, delay: 0.2 }}
                   src={currentRoom?.imageLetter?.url}
                   alt={`Flor de la habitación ${currentRoom?.type}`}
-                  className="h-60 md:h-96"
+                  className="h-96"
                 />
               )}
               <motion.p

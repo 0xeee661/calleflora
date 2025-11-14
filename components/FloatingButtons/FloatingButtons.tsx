@@ -4,7 +4,7 @@ import { FaWhatsapp } from 'react-icons/fa'
 const FloatingButtons = () => {
   return (
     <a
-      href={`${whatsappLink}&text=%C2%A1Hola!%20Quiero%20reservar%20a%20la%20mejor%20tarifa`}
+      href={whatsappLink}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="WhatsApp"

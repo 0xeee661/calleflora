@@ -18,15 +18,10 @@ export default async function Home() {
       {/* <Rooms rooms={data?.listCollection?.items || []} /> */}
 
       {/* <QuotePage /> */}
-
-      <div className="hidden md:block">
-        <HotelSpaces />
-      </div>
-
+      <HotelSpaces />
       <Map />
 
       {/* <Rooftop /> */}
-
       <FloatingMenu hideOnBuilding={true} />
     </>
   )

@@ -95,7 +95,7 @@ function RoomCarousel({ images }: RoomCarouselProps) {
     <div className="w-full mb-4">
 
       <div className="relative w-full max-w-[420px] aspect-[16/9] 
-      overflow-hidden rounded-2xl mx-auto md:mx-0 h-[300px] cursor-pointer">
+      overflow-hidden rounded-2xl mx-auto h-[300px] cursor-pointer">
         <Image
           key={images[currentIndex]}
           src={images[currentIndex]}
@@ -107,10 +107,10 @@ function RoomCarousel({ images }: RoomCarouselProps) {
           onClick={openLightbox}
         />
 
-      
+
       </div>
 
-      <div className="mt-4 flex justify-center gap-2 w-full max-w-[420px] mx-auto md:mx-0 ">
+      <div className="mt-4 flex justify-center gap-2 w-full max-w-[420px] mx-auto">
         {images.map((_, i) => (
           <button
             key={i}
@@ -198,18 +198,18 @@ export default function Habitacion() {
     >
 
       <div className='bg-[#201f1f] xl:w-[80%] w-[90%] lg:h-[65vh] h-[90vh] mx-[5%] rounded-3xl
-      flex flex-col md:flex-row items-center justify-center gap-8 relative round-'>
+      flex flex-col lg:flex-row items-center justify-center gap-8 relative'>
 
         {/* Capa de opacidad sobre toda la sección */}
 
-        <div className=" w-full md:w-1/2 flex flex-col 
+        <div className=" w-full lg:w-1/2 flex flex-col 
         items-start justify-center  
         relative text-left z-[1] ">
           <DecorFlower
             src="/images/newResources/florA.png"
-            top="-175%"
+            top="-80%"
             right="10%"
-            rightLg="-10%"
+            rightLg="3%"
             width={800}
             height={700}
             overlayOpacity={0}
@@ -217,26 +217,27 @@ export default function Habitacion() {
             className="z-[10]"
           />
 
-          <div className='flex flex-col items-end justify-center w-full'>
-          <div className='font-playfair font-semibold
-          text-[24px]  md:text-[26px] lg:text-[32px] xl:text-[36px] leading-[100%] 
-          -mt-20 lg:-mt-20'>
-            <p>Cada habitación</p>
-            <p>es una experiencia</p>
-            <p>floral</p>
-          </div>
-          <div className='font-playfair text-extra-light
-          text-[24px] md:text-[26px] lg:text-[32px] xl:text-[36px] lg:pr-6
-          pt-4 -mt-16 lg:-mt-2 leading-[100%]'>
-            <p>Conoce nuestras</p>
-            <p>habitaciones</p>
-            <p>y sus amenidades</p>
-          </div>
+          <div className='flex flex-col lg:items-end items-center justify-center w-full
+          text-center lg:text-left pt-28 text-[20px] sm:text-[24px]
+          md:text-[26px] lg:text-[32px] xl:text-[36px]'>
+            <div className='font-playfair font-semibold
+           leading-[100%] 
+          -mt-20 lg:-mt-20 '>
+              <p>Cada habitación</p>
+              <p>es una experiencia</p>
+              <p>floral</p>
+            </div>
+            <div className='font-playfair text-extra-light lg:pr-6
+          pt-4  lg:-mt-2 leading-[100%]'>
+              <p>Conoce nuestras</p>
+              <p>habitaciones</p>
+              <p>y sus amenidades</p>
+            </div>
           </div>
 
         </div>
 
-        <div className="border-red-50 w-full md:w-1/2 z-[2]">
+        <div className="border-red-50 w-full lg:w-1/2 z-[2] flex flex-col items-center lg:items-end justify-center">
 
           {/* Carousel con zoom */}
           {(() => {
@@ -253,20 +254,22 @@ export default function Habitacion() {
 
           <div className='border-red-50 w-full  mx-auto md:mx-0 text-center mt-4
           flex gap-4 justify-end 
-          xl:pr-[40%] lg:pr-[22%] pr-0 flex flex-col lg:flex-row 
+          xl:pr-[20%] lg:pr-[22%] pr-0 flex flex-col lg:flex-row 
           items-center lg:items-end pt-2 lg:pt-0'>
-            <p className='text-white font-quicksand text-[24px] leading-[100%]'>
+            <p className='text-white font-quicksand lg:text-[24px] text-[16px] leading-[100%]'>
               Conocer Habitaciones</p>
             <Link
-            href="/habitaciones"
-            className="flex size-9 items-center justify-center rounded-full 
+              href="/habitaciones"
+              className="flex size-9 items-center justify-center rounded-full 
             bg-white shadow-lg transition hover:scale-105 active:scale-95 max-md:mb-8"
-            style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.18)', 
-              transform: `rotate(${arrowRotationDeg}deg)` }}
-            aria-label="Siguiente"
-          >
-            <ArrowDownRight className="size-6 font-light text-black" />
-          </Link>
+              style={{
+                boxShadow: '0 2px 8px rgba(0,0,0,0.18)',
+                transform: `rotate(${arrowRotationDeg}deg)`
+              }}
+              aria-label="Siguiente"
+            >
+              <ArrowDownRight className="size-6 font-light text-black" />
+            </Link>
           </div>
         </div>
 

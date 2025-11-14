@@ -27,7 +27,7 @@ export const navigationLinks = [
 export const Footer = () => {
   return (
     <footer className="flex snap-start items-center justify-center px-8 py-15 lg:h-[50vh] h-[80vh]">
-      <div className="w-full max-w-[1075px]">
+      <div className="w-full max-w-[1075px] pb-10 lg:pb-0">
         {/* Menú superior del footer */}
         <nav className="mb-10">
           <ul className="flex flex-col items-center justify-center gap-6 md:flex-row md:gap-16">
@@ -59,7 +59,7 @@ export const Footer = () => {
               <RiInstagramFill size={22} />
             </Link>
             <Link
-              href="#"
+              href="https://www.instagram.com/calleflorahotel/"
               aria-label="Facebook"
               target="_blank"
               rel="noopener noreferrer"
